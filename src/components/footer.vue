@@ -29,7 +29,7 @@
 				</div>
 				<div class="col-2">
 					<i class="fa-solid fa-headphones display-6"></i>
-					<span class="small">博客</span>
+					<span class="small">播客</span>
 				</div>
 				<div class="col-2">
 					<a href="#/myhome" class="small text-decoration-none text-black">

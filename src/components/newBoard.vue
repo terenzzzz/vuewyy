@@ -1,34 +1,72 @@
 <template>
-   <div class="newBoard">
-      <!-- 新歌榜单 -->
+	<div class="newBoard">
+		<!-- 新歌榜单 -->
+		<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
+			<!-- 榜单导航 -->
 			<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
-				<!-- 榜单导航 -->
-				<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
-					<div class="col-2 border-end"><span class="small">新歌</span></div>
-					<div class="col-2 border-end"><span class="small">新碟</span></div>
-					<div class="col-3"><span class="small">数字专辑</span></div>
-					<div class="col-2"></div>
-					<div class="col-3"><span class="small">更多</span></div>
-				</div>
-				<!-- 榜单内容 -->
-				<div class="row align-items-center ps-2 pe-2 g-1">
-					<ul class="list-unstyled ">
-						<li v-for="(newSong,index) in newSongs" :key="newSong">
-							<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
-								<div class="col-2">
-									<img :src="newSong.picUrl" class="img-fluid" alt="">
-								</div>
-								<div class="col-10 ">
-									<span class="small">{{newSong.name}}</span>
-									<br>
-									<span class="small text-muted">{{newSong.song.artists[0].name}}</span>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
+				<div class="col-2 border-end"><span class="small" @click="goNewSongs">新歌</span></div>
+				<div class="col-2 border-end"><span class="small" @click="goNewCds">新碟</span></div>
+				<div class="col-3"><span class="small" @click="goNewAlbums">数字专辑</span></div>
+				<div class="col-2"></div>
+				<div class="col-3"><span class="small">更多</span></div>
 			</div>
-   </div>
+			<!-- 新歌榜内容 -->
+			<div class="row align-items-center ps-2 pe-2 g-1" v-show="newSongsShow">
+				<ul class="list-unstyled ">
+					<li v-for="(newSong,index) in newSongs" :key="newSong">
+						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
+							<div class="col-2">
+								<img :src="newSong.picUrl" class="img-fluid" alt="">
+							</div>
+							<div class="col-10 ">
+								<span class="small">{{newSong.name}}</span>
+								<br>
+								<span class="small text-muted">{{newSong.song.artists[0].name}}</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<!-- 新碟榜内容 -->
+			<div class="row align-items-center ps-2 pe-2 g-1" v-show="newCdsShow">
+				<ul class="list-unstyled ">
+					<li v-for="(newCd,index) in newCds" :key="newCd">
+						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
+							<div class="col-2">
+								<img :src="newCd.picUrl" class="img-fluid" alt="">
+							</div>
+							<div class="col-10 ">
+								<span class="small">{{newCd.name}}</span>
+								<br>
+								<span class="small text-muted">{{newCd.artist.name}}</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<!-- 新数字专辑内容 -->
+			<div class="row align-items-center ps-2 pe-2 g-1" v-show="newAlbumsShow">
+				<ul class="list-unstyled ">
+					<li v-for="(newAlbum,index) in newAlbums" :key="newAlbum">
+						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
+							<div class="col-2">
+								<img :src="newAlbum.coverUrl" class="img-fluid" alt="">
+							</div>
+							<div class="col-10 ">
+								<span class="small">{{newAlbum.albumName}}</span>
+								<br>
+								<span class="small text-muted">{{newAlbum.artistName}}</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+
+		</div>
+	</div>
 </template>
 <script>
 export default {
@@ -42,20 +80,21 @@ export default {
    },
    data() {
      return {
-      newSongs:{}
+      newSongs:[],
+			newCds:[],
+			newAlbums:[],
+			newSongsShow:true,
+			newCdsShow:false,
+			newAlbumsShow:false,
      }
    },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
    mounted() {
-    this.getNewSong()
+    this.getNewSong(),
+		this.getNewCd(),
+		this.getNewAlbum()
    },
    methods: {
-     getNewSong:function(){
+    getNewSong:function(){
 			var that = this;
 			axios.get("http://localhost:3000/personalized/newsong?limit=5").then
 			(function (response){
@@ -64,7 +103,45 @@ export default {
 			},function(err){
 				console.log(err);
 			})
-    }
+    },
+		getNewCd:function(){
+			var that = this;
+			axios.get("http://localhost:3000/top/album?offset=0&limit=5").then
+			(function (response){
+				console.log(response)
+				that.newCds = response.data.weekData.slice(10,15)
+			},function(err){
+				console.log(err);
+			})
+    },
+		getNewAlbum:function(){
+			var that = this;
+			axios.get("http://localhost:3000/album/list?limit=5").then
+			(function (response){
+				console.log(response)
+				that.newAlbums = response.data.products
+			},function(err){
+				console.log(err);
+			})
+    },
+
+		goNewCds:function(){
+			this.newSongsShow = false;
+			this.newCdsShow = true;
+			this.newAlbumsShow = false;
+		},
+
+		goNewSongs:function(){
+			this.newSongsShow = true;
+			this.newCdsShow = false;
+			this.newAlbumsShow = false;
+		},
+
+		goNewAlbums:function(){
+			this.newSongsShow = false;
+			this.newCdsShow = false;
+			this.newAlbumsShow = true;
+		}
    }
 };
 </script>
