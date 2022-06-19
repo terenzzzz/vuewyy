@@ -145,7 +145,7 @@ export default {
    methods: {
     searchSong:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/cloudsearch?limit=50&keywords=" + this.keyword).then
+			axios.get("http://localhost:3000/cloudsearch?limit=50&keywords=" + this.keyword).then
 			(function (response){
         console.log(response);
         that.result = response.data.result.songs
@@ -157,7 +157,7 @@ export default {
 
     searchAlbum:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/cloudsearch?limit=50&type=10&keywords=" + this.keyword).then
+			axios.get("http://localhost:3000/cloudsearch?limit=50&type=10&keywords=" + this.keyword).then
 			(function (response){
         that.albums = response.data.result.albums
         that.typeShow = "专辑"
@@ -168,7 +168,7 @@ export default {
 
     searchSinger:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/cloudsearch?limit=50&type=100&keywords=" + this.keyword).then
+			axios.get("http://localhost:3000/cloudsearch?limit=50&type=100&keywords=" + this.keyword).then
 			(function (response){
         that.singers = response.data.result.artists
         that.typeShow = "歌手"
@@ -179,7 +179,7 @@ export default {
 
     searchList:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/cloudsearch?limit=50&type=1000&keywords=" + this.keyword).then
+			axios.get("http://localhost:3000/cloudsearch?limit=50&type=1000&keywords=" + this.keyword).then
 			(function (response){
         console.log(response)
         that.playLists = response.data.result.playlists
@@ -191,7 +191,7 @@ export default {
 
     searchUser:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/cloudsearch?limit=50&type=1002&keywords=" + this.keyword).then
+			axios.get("http://localhost:3000/cloudsearch?limit=50&type=1002&keywords=" + this.keyword).then
 			(function (response){
         console.log(response)
         that.users = response.data.result.userprofiles

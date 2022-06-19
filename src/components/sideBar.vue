@@ -60,7 +60,7 @@ export default {
    methods: {
     getSearchKeyword:function(){
 			var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/search/default").then
+			axios.get("http://localhost:3000/search/default").then
 			(function (response){
 				// console.log(response)
 				that.searchKeyword = response.data.data.showKeyword
@@ -71,7 +71,7 @@ export default {
     },
     
     logOut:function(){
-			axios.post("https://wyyyyy.herokuapp.com/logout?cookie=" + this.sessionCookie).then
+			axios.post("http://localhost:3000/logout?cookie=" + this.sessionCookie).then
 			(function (response){
 				console.log(response)
 			},function(err){

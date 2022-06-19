@@ -154,7 +154,7 @@ export default {
    methods: {
      newAll:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/top/song?type=0").then
+			axios.get("http://localhost:3000/top/song?type=0").then
 			(function (response){
         // console.log(response)
         that.allsongs = response.data.data
@@ -166,7 +166,7 @@ export default {
 
     newCn:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/top/song?type=7").then
+			axios.get("http://localhost:3000/top/song?type=7").then
 			(function (response){
         // console.log(response)
         that.cns = response.data.data
@@ -178,7 +178,7 @@ export default {
 
     newEa:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/top/song?type=96").then
+			axios.get("http://localhost:3000/top/song?type=96").then
 			(function (response){
         console.log(response)
         that.eas = response.data.data
@@ -190,7 +190,7 @@ export default {
 
     newJp:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/top/song?type=8").then
+			axios.get("http://localhost:3000/top/song?type=8").then
 			(function (response){
         console.log(response)
         that.jps = response.data.data
@@ -202,7 +202,7 @@ export default {
 
     newKr:function(){
       var that = this;
-			axios.get("https://wyyyyy.herokuapp.com/top/song?type=16").then
+			axios.get("http://localhost:3000/top/song?type=16").then
 			(function (response){
         console.log(response)
         that.krs = response.data.data

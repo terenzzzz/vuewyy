@@ -81,7 +81,7 @@ export default {
   methods: {
     getRecomSongs:function(){
       var that = this;
-      axios.post("https://wyyyyy.herokuapp.com/recommend/songs").then
+      axios.post("http://localhost:3000/recommend/songs").then
       (function (response){
         that.recomSongs = response.data.data.dailySongs
         console.log(response)
