@@ -6,44 +6,24 @@
 				<div class="row align-items-center mt-2 ps-3 pe-3 g-1">
 					<div class="col-2"><span class="small">排行榜</span></div>
 					<div class="col-7"></div>
-					<div class="col-3"><span class="small">更多</span></div>
+					<div class="col-3"><a href="#/RankBoard" class="small text-decoration-none text-black">更多</a></div>
 				</div>
-
 				<!-- 榜单 -->
-				<div class="row align-items-center mt-2 ps-3 pe-3 g-1">
-					<div class="card" >
-						<div class="card-body">
-							<h5 class="card-title">{{list.name}}</h5>
-              <span class="small text-muted">{{list.description}}</span>
-              <!-- 歌曲详情 -->
-							<div class="row align-items-center mt-2 ps-1 pe-1 g-1">
-								<div class="col-1"> 1. </div>
-								<div class="col-2">
-									<img src="../assets/song2.png" class="img-fluid" alt="">
-									</div>
-									<div class="col-9 ">
-										<span class="small">近在千里-周柏豪</span>
-									</div>
-								
-								<!-- <div class="col-1"> 2. </div>
-								<div class="col-2">
-									<img src="../assets/song2.png" class="img-fluid" alt="">
-									</div>
-									<div class="col-9 ">
-										<span class="small">近在千里-周柏豪</span>
-									</div>
-								
-								<div class="col-1"> 3. </div>
-								<div class="col-2">
-									<img src="../assets/song2.png" class="img-fluid" alt="">
-									</div>
-									<div class="col-9 ">
-										<span class="small">近在千里-周柏豪</span>
-									</div> -->
-							</div>
-						</div>
-					</div>
-				</div>
+        <div>
+          <div class="overflow-scroll" >
+            <div class="row" style="width: 100%;overflow-x: auto;overflow-y: hidden; white-space: nowrap;display: inline-block;">
+              <div class="col-5 border mx-2" v-for="(list,index) in lists" :key="list" style="display: inline-block;vertical-align: top;" @click="goList(list.id)">
+                <div class="row mt-2">
+                  <img :src="list.coverImgUrl" class="img-fluid"  alt="">
+                  <h5>{{list.name}}</h5>
+                </div>
+                <div class="row ">
+                  <p class="small text-muted d-flex align-items-center p1" style="height: 150px; word-break: break-all; white-space: normal;">{{list.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 			</div>
    </div>
 </template>
@@ -59,9 +39,9 @@ export default {
    },
    data() {
      return {
-      list:[],
+      lists:[],
       listId:"",
-      listSongs:[]
+
      }
    },
    computed: {
@@ -71,34 +51,36 @@ export default {
      
    },
    mounted() {
-    this.getList()
-    // this.getListSongs()
+    this.getList();
    },
    methods: {
     getList:function(){
       var that = this;
-      axios.get("http://localhost:3000/toplist/detail").then
+      axios.get("https://wyyyyy.herokuapp.com/toplist/detail").then
       (function (response){
-        console.log(response)
-        that.list = response.data.list[0]
-        that.listId = response.data.list[0].id
+        // console.log(response)
+        that.lists = response.data.list.slice(0,5)
+      },function(err){
+        console.log(err);
+      })
+      
+    },
+
+    getListSongs1:function(id){
+      var that = this
+      axios.get("https://wyyyyy.herokuapp.com/playlist/detail?id=" + id).then
+      (function (response){
+         that.listSongs1 = response.data.playlist.tracks.slice(0,5)
       },function(err){
         console.log(err);
       })
     },
-    // getListSongs:function(){
-    //   var that = this;
-    //   let params = {id:this.listId}
-    //   axios.get("http://localhost:3000/playlist/track/all").then
-    //   (function (response){
-    //     console.log(response)
-    //     that.listSongs = response.data.songs
-    //   },function(err){
-    //     console.log(err);
-    //   })
-    // }
+    goList:function(listId){
+		  this.$router.push({path: '/singleList', query:{id:listId}});
+		}
    }
 };
 </script>
 <style lang='' scoped>
+
 </style>

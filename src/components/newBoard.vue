@@ -8,13 +8,13 @@
 				<div class="col-2 border-end"><span class="small" @click="goNewCds">新碟</span></div>
 				<div class="col-3"><span class="small" @click="goNewAlbums">数字专辑</span></div>
 				<div class="col-2"></div>
-				<div class="col-3"><span class="small">更多</span></div>
+				<div class="col-3"><a href="#/allNewSong" class="small text-decoration-none text-black">更多</a></div>
 			</div>
 			<!-- 新歌榜内容 -->
 			<div class="row align-items-center ps-2 pe-2 g-1" v-show="newSongsShow">
 				<ul class="list-unstyled ">
 					<li v-for="(newSong,index) in newSongs" :key="newSong">
-						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
+						<div class="row align-items-center mt-2 ps-2 pe-2 g-1" @click="playSong(newSong.song.id)">
 							<div class="col-2">
 								<img :src="newSong.picUrl" class="img-fluid" alt="">
 							</div>
@@ -96,9 +96,9 @@ export default {
    methods: {
     getNewSong:function(){
 			var that = this;
-			axios.get("http://localhost:3000/personalized/newsong?limit=5").then
+			axios.get("https://wyyyyy.herokuapp.com/personalized/newsong?limit=5").then
 			(function (response){
-				console.log(response)
+				// console.log(response)
 				that.newSongs = response.data.result
 			},function(err){
 				console.log(err);
@@ -106,9 +106,9 @@ export default {
     },
 		getNewCd:function(){
 			var that = this;
-			axios.get("http://localhost:3000/top/album?offset=0&limit=5").then
+			axios.get("https://wyyyyy.herokuapp.com/top/album?offset=0&limit=5").then
 			(function (response){
-				console.log(response)
+				// console.log(response)
 				that.newCds = response.data.weekData.slice(10,15)
 			},function(err){
 				console.log(err);
@@ -116,9 +116,9 @@ export default {
     },
 		getNewAlbum:function(){
 			var that = this;
-			axios.get("http://localhost:3000/album/list?limit=5").then
+			axios.get("https://wyyyyy.herokuapp.com/album/list?limit=5").then
 			(function (response){
-				console.log(response)
+				// console.log(response)
 				that.newAlbums = response.data.products
 			},function(err){
 				console.log(err);
@@ -141,6 +141,9 @@ export default {
 			this.newSongsShow = false;
 			this.newCdsShow = false;
 			this.newAlbumsShow = true;
+		},
+		playSong:function(songId){
+			this.$router.push({path: '/playView', query:{id:songId}});
 		}
    }
 };

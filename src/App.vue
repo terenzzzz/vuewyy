@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <router-view/>
-    <Footer></Footer>
+    <router-view :key="$route.fullPath" />
+    <Footer v-show="footerShow"></Footer>
   </div>
   
 </template>
@@ -12,6 +12,32 @@ export default {
   name: 'App',
   components:{
     Footer
+  },
+  data() {
+    return {
+      footerShow:true,
+    }
+	},
+  created() {
+    if (this.$route.name=='Login' || this.$route.name=='MobileLogIn' || this.$route.name=='PasswordLogIn' || this.$route.name=='PlayView')
+      this.footerShow = false
+  },
+  watch: {
+    //如果路由有变化，再次执行该方法
+    "$route": "fetchDate"
+  },
+  mounted() {
+
+  },
+  methods: {
+    fetchDate(){
+      if (this.$route.name=='Login' || this.$route.name=='MobileLogIn' 
+        || this.$route.name=='PasswordLogIn' || this.$route.name=='PlayView' ){
+        this.footerShow = false
+      }else{
+        this.footerShow = true
+      }
+    }
   }
 }
 </script>
@@ -23,11 +49,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: black;
 }
 
 .body{
-		padding-top: 100px;
-		padding-bottom: 150px;
+  padding-top: 100px;
+  padding-bottom: 150px;
 }
 </style>

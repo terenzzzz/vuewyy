@@ -6,13 +6,17 @@
 			<div class="row  mt-2 ps-2 pe-2 g-1">
 				<div class="col-3 "><span class="small">推荐歌单</span></div>
 				<div class="col-6"></div>
-				<div class="col-3"><span class="small">更多</span></div>
+        <div class="col-3"><a href="#/SongList" class="small text-decoration-none text-black">更多</a></div>
 			</div>
 
-			<div class="col-4" v-for="(recomend,index) in recomList" :key="recomend">
-				<img :src= 'recomend.picUrl' class="img-fluid" alt="" >
-				<span class="small">{{recomend.name}}</span>
-			</div>
+      <div class="h-100" style="width: 100%;overflow-x: auto;overflow-y: hidden;white-space: nowrap;">
+        <div v-for="(recomend,index) in recomList" :key="recomend"  style="width:28%; margin-right: 10px;display: inline-block;vertical-align:top" @click="goList(recomend.id)">
+              <img :src= 'recomend.picUrl' class="img-fluid" alt="" > 
+              <p style="word-break: break-all; white-space: normal;">{{recomend.name}}</p>
+        </div>
+      </div>
+
+      
 		</div>
    </div>
 </template>
@@ -43,16 +47,23 @@ export default {
   methods: {
 		getRecomList:function(){
 			var that = this;
-			axios.get("http://localhost:3000/personalized?limit=3").then
+			axios.get("https://wyyyyy.herokuapp.com/personalized?limit=10").then
 			(function (response){
-				console.log(response)
+				// console.log(response)
 				that.recomList = response.data.result
 			},function(err){
 				console.log(err);
 			})
-    }
+    },
+    goList:function(listId){
+		  this.$router.push({path: '/singleList', query:{id:listId}});
+		}
+    
   }
 };
 </script>
 <style lang='' scoped>
+#list{
+  white-space:nowrap;
+}
 </style>

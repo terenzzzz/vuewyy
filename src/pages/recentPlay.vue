@@ -1,5 +1,5 @@
 <template>
-	<div class="recomend">
+	<div class="recentPlay">
 		<!-- 导航栏 -->
 	 	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
 			<div class="container">
@@ -7,27 +7,17 @@
 					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
 				</div>
 				<div class="col-8">
-					今日推荐
+					最近播放
 				</div>
 				<div class="col-2">
 					<i class="fa-solid fa-ellipsis-vertical"></i>
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="body">
-			<!-- 日期 -->
-			<div class="row align-items-center mt-3 pt-5 ps-4 pe-4">
-				<div class="col-6 ps-0">
-					<div><strong class="display-3">{{month}}</strong> / <span>{{date}}</span></div>
-					<span class="small">查看今日运势</span>
-					<i class="fa-solid fa-chevron-right smll"></i>
-				</div>
-				<div class="col-2"></div>
-				<div class="col-4"><span class="small">历史日推</span></div>
-			</div>
 			<!-- 操作 -->
-			<div class="row align-items-center pt-3 ps-4 pe-4">
+			<div class="row align-items-center px-4">
 				<div class="col-4">
 					<i class="fa-solid fa-circle-play"></i>
 					<span>播放全部</span>
@@ -41,15 +31,15 @@
 			<!-- 音乐列表 -->
 			<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
 				<ul class="list-unstyled ">
-					<li v-for="(recomSong,index) in recomSongs " :key="recomSong">
-						<div class="row align-items-center mt-2 ps-2 pe-2 g-1" @click="playSong(recomSong.id)">
+					<li v-for="(recentSong,index) in recentSongs" :key="recentSong" @click="playSong(recentSong.song.id)">
+						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
 							<div class="col-2">
-								<img :src="recomSong.al.picUrl" class="img-fluid" alt="">
+							<img :src="recentSong.song.al.picUrl" class="img-fluid" alt="">
 							</div>
 							<div class="col-8 ">
-								<span class="small">{{recomSong.name}}</span>
+								<span class="small">{{recentSong.song.name}}</span>
 								<br>
-								<span class="small text-muted me-1" v-for="(artist,index) in recomSong.ar" :key="artist">{{artist.name}}</span>
+								<span class="small text-muted me-2" v-for="(artist,index) in recentSong.song.ar" :key="artist">{{artist.name}} - {{recentSong.song.al.name}}</span>
 							</div>
 							<div class="col-2">
 								<i class="fa-brands fa-youtube pe-2"></i>
@@ -57,8 +47,11 @@
 							</div>
 						</div>
 					</li>
-
 				</ul>
+				<div class="clearRecentSongs">
+					<i class="fa-solid fa-trash-can"></i>
+					<span class="small">删除播放记录</span>
+				</div>
 			</div>
 		</div>
 
@@ -67,40 +60,44 @@
 </template>
 <script>
 export default {
-  name: 'Recomend',
+  name: 'RecentPlay',
   data() {
     return {
-		month:new Date().getMonth() + 1,
-		date:new Date().getDate(),
-		recomSongs: [],
+		uid:'280756683',
+		recentSongs:[],
+		sessionUid: sessionStorage.getItem('userId'),
+      	sessionCookie: sessionStorage.getItem('userCookie')
     }
   },
   mounted() {
-    this.getRecomSongs()
+    this.getRecentSongs()
   },
   methods: {
-    getRecomSongs:function(){
+    getRecentSongs:function(){
       var that = this;
-      axios.post("https://wyyyyy.herokuapp.com/recommend/songs").then
+      axios.post("https://wyyyyy.herokuapp.com/user/record?uid=" +this.uid + "&type=1").then
       (function (response){
-        that.recomSongs = response.data.data.dailySongs
+        that.recentSongs = response.data.weekData
         console.log(response)
       },function(err){
         console.log(err);
       })
     },
+
 	playSong:function(songId){
 		this.$router.push({path: '/playView', query:{id:songId}});
 		// if(this.$route.fullPath == '/searchResult?id=' + songId){
 		// 	window.location.reload();
 		// }
 	}
+
+	
+
   }
 };
 </script>
 <style lang='' scoped>
 	.body{
-		padding-top: 30px;
-		padding-bottom: 120px;
+
 	}
 </style>

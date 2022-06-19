@@ -2,22 +2,6 @@
 	<!-- 页脚 -->
 	<div class="footer navbar fixed-bottom bg-light ">
 		<div class="container">
-
-			<div class="row mx-auto d-flex align-items-center border-bottom">
-				<div class="col-2">
-					<i class="fa-solid fa-compact-disc display-6"></i>
-				</div>
-				<div class="col-6">
-					<span>我不如-曾比特</span>
-				</div>
-				<div class="col-2">
-					<i class="fa-solid fa-circle-pause fa-lg"></i>
-				</div>
-				<div class="col-2">
-					<i class="fa-solid fa-bars fa-lg" ></i>
-				</div>
-			</div>
-
 			<div class="row align-items-center mt-2">
 				<div class="col-1"></div>
 				<div class="col-2">
@@ -63,9 +47,16 @@ export default {
 
    data() {
      return {
-      year:new Date().getFullYear()
+      year:new Date().getFullYear(),
+	  sessionUid: sessionStorage.getItem('userId'),
+      sessionCookie: sessionStorage.getItem('userCookie'),
      }
    },
+   mounted() {
+  },
+  methods:{
+	
+  }
 };
 </script>
 <style lang='' scoped>
