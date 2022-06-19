@@ -185,19 +185,18 @@ export default {
     getSongList:function(){
       var that = this;
       axios.get("https://wyyyyy.herokuapp.com/user/playlist?uid=" + this.sessionUid + "&cookie=" + this.sessionCookie).then
-      (function (response){
+      ( function (response) {
         that.songLists = response.data.playlist
         // console.log(response)
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
-    goList:function(listId){
-      this.$router.push({path: '/singleList', query:{id:listId}});
-		}
+    goList: function (listId) {
+      this.$router.push({path: '/singleList', query:{id: listId}})
+    }
   }
-};
+}
 </script>
 <style lang='' scoped>
-  
 </style>
