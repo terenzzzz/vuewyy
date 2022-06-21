@@ -3,38 +3,37 @@
     <router-view :key="$route.fullPath" />
     <Footer v-show="footerShow"></Footer>
   </div>
-  
+
 </template>
 
 <script>
-import Footer from "../src/components/Footer"
+import Footer from '../src/components/Footer'
 export default {
   name: 'App',
-  components:{
+  components: {
     Footer
   },
-  data() {
+  data () {
     return {
-      footerShow:true,
+      footerShow: true
     }
-	},
-  created() {
-    if (this.$route.name=='Login' || this.$route.name=='MobileLogIn' || this.$route.name=='PasswordLogIn' || this.$route.name=='PlayView')
-      this.footerShow = false
+  },
+  created () {
+    if (this.$route.name === 'Login' || this.$route.name === 'MobileLogIn' || this.$route.name === 'PasswordLogIn' || this.$route.name === 'PlayView') { this.footerShow = false }
   },
   watch: {
-    //如果路由有变化，再次执行该方法
-    "$route": "fetchDate"
+    // 如果路由有变化，再次执行该方法
+    '$route': 'fetchDate'
   },
-  mounted() {
+  mounted () {
 
   },
   methods: {
-    fetchDate(){
-      if (this.$route.name=='Login' || this.$route.name=='MobileLogIn' 
-        || this.$route.name=='PasswordLogIn' || this.$route.name=='PlayView' ){
+    fetchDate () {
+      if (this.$route.name === 'Login' || this.$route.name === 'MobileLogIn' ||
+        this.$route.name === 'PasswordLogIn' || this.$route.name === 'PlayView') {
         this.footerShow = false
-      }else{
+      } else {
         this.footerShow = true
       }
     }
