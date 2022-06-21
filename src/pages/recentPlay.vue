@@ -14,7 +14,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="body">
 			<!-- 操作 -->
 			<div class="row align-items-center px-4">
@@ -55,48 +55,40 @@
 			</div>
 		</div>
 
-	</div>	
+	</div>
 
 </template>
 <script>
 export default {
   name: 'RecentPlay',
-  data() {
+  data () {
     return {
-		uid:'280756683',
-		recentSongs:[],
-		sessionUid: sessionStorage.getItem('userId'),
-      	sessionCookie: sessionStorage.getItem('userCookie')
+      recentSongs: [],
+      sessionUid: sessionStorage.getItem('userId'),
+      sessionCookie: sessionStorage.getItem('userCookie')
     }
   },
-  mounted() {
+  mounted () {
     this.getRecentSongs()
   },
   methods: {
-    getRecentSongs:function(){
-      var that = this;
-      axios.post("http://localhost:3000/user/record?uid=" +this.uid + "&type=1").then
-      (function (response){
+    getRecentSongs: function () {
+      var that = this
+      axios.post('http://localhost:3000/user/record?uid=' + this.sessionUid + '&type=1').then
+      (function (response) {
         that.recentSongs = response.data.weekData
         console.log(response)
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
 
-	playSong:function(songId){
-		this.$router.push({path: '/playView', query:{id:songId}});
-		// if(this.$route.fullPath == '/searchResult?id=' + songId){
-		// 	window.location.reload();
-		// }
-	}
-
-	
+    playSong: function (songId) {
+      this.$router.push({path: '/playView', query: {id: songId}})
+    }
 
   }
-};
+}
 </script>
 <style lang='' scoped>
-	.body{
-	}
 </style>;

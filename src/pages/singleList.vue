@@ -14,7 +14,7 @@
 				</div>
 			</div>
 		</div>
-    
+
     <div class="body">
       <!-- 歌单详情 -->
       <div class="row mx-2 pb-2 border-bottom">
@@ -73,47 +73,47 @@
 </template>
 <script>
 export default {
-   name: 'SingleList',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
+  name: 'SingleList',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
       listId: this.$route.query.id,
-      listDetail:[],
-      listSongs:[]
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
-     this.getList()
-   },
-   methods: {
-     getList:function(){
-			var that = this;
-			axios.get("http://localhost:3000/playlist/detail?id=" + this.listId).then
-			(function (response){
-				// console.log(response)
-				that.listDetail = response.data.playlist
+      listDetail: [],
+      listSongs: []
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
+    this.getList()
+  },
+  methods: {
+    getList: function () {
+      var that = this
+      axios.get('http://localhost:3000/playlist/detail?id=' + this.listId).then
+      (function (response) {
+        // console.log(response)
+        that.listDetail = response.data.playlist
         that.listSongs = response.data.playlist.tracks
-			},function(err){
-				console.log(err);
-			})
+      }, function (err) {
+        console.log(err)
+      })
     },
-    playSong:function(songId){
-			this.$router.push({path: '/playView', query:{id:songId}});
-		}
-   }
-};
+    playSong: function (songId) {
+      this.$router.push({path: '/playView', query: {id: songId}})
+    }
+  }
+}
 </script>
 <style lang='' scoped>
 .p1{

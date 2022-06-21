@@ -40,24 +40,24 @@
 </template>
 <script>
 export default {
-   name: 'Footer',
-   components: {
-     
-   },
+  name: 'Footer',
+  components: {
 
-   data() {
-     return {
-      year:new Date().getFullYear(),
-	  sessionUid: sessionStorage.getItem('userId'),
-      sessionCookie: sessionStorage.getItem('userCookie'),
-     }
-   },
-   mounted() {
   },
-  methods:{
-	
+
+  data () {
+    return {
+      year: new Date().getFullYear(),
+      sessionUid: sessionStorage.getItem('userId'),
+      sessionCookie: sessionStorage.getItem('userCookie')
+    }
+  },
+  mounted () {
+  },
+  methods: {
+
   }
-};
+}
 </script>
 <style lang='' scoped>
 </style>

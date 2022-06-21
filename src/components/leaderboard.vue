@@ -29,57 +29,56 @@
 </template>
 <script>
 export default {
-   name: 'LeaderBoard',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-      lists:[],
-      listId:"",
+  name: 'LeaderBoard',
+  components: {
 
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
-    this.getList();
-   },
-   methods: {
-    getList:function(){
-      var that = this;
-      axios.get("http://localhost:3000/toplist/detail").then
-      (function (response){
-        // console.log(response)
-        that.lists = response.data.list.slice(0,5)
-      },function(err){
-        console.log(err);
-      })
-      
-    },
+  },
+  mixins: [],
+  props: {
 
-    getListSongs1:function(id){
+  },
+  data () {
+    return {
+      lists: [],
+      listId: ''
+
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
+    this.getList()
+  },
+  methods: {
+    getList: function () {
       var that = this
-      axios.get("http://localhost:3000/playlist/detail?id=" + id).then
-      (function (response){
-         that.listSongs1 = response.data.playlist.tracks.slice(0,5)
-      },function(err){
-        console.log(err);
+      axios.get('http://localhost:3000/toplist/detail').then
+      (function (response) {
+        // console.log(response)
+        that.lists = response.data.list.slice(0, 5)
+      }, function (err) {
+        console.log(err)
       })
     },
-    goList:function(listId){
-		  this.$router.push({path: '/singleList', query:{id:listId}});
-		}
-   }
-};
+
+    getListSongs1: function (id) {
+      var that = this
+      axios.get('http://localhost:3000/playlist/detail?id=' + id).then
+      (function (response) {
+        that.listSongs1 = response.data.playlist.tracks.slice(0, 5)
+      }, function (err) {
+        console.log(err)
+      })
+    },
+    goList: function (listId) {
+		  this.$router.push({path: '/singleList', query: {id: listId}})
+    }
+  }
+}
 </script>
 <style lang='' scoped>
 

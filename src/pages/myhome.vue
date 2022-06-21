@@ -12,7 +12,6 @@
         </div>
       </div>
     </div>
-    
     <div class="body">
       <!-- 个人信息 -->
       <div class="card mx-4 rounded-5 bg-light">
@@ -101,7 +100,7 @@
           <div class="col-2"><i class="fa-solid fa-ellipsis-vertical"></i></div>
         </div>
 
-				<div class="row ps-3 d-flex align-items-center g-0 mb-2" v-for="(songList, index) in songLists" :key="songList" @click="goList(songList.id)">
+        <div class="row ps-3 d-flex align-items-center g-0 mb-2" v-for="(songList, index) in songLists" :key="songList" @click="goList(songList.id)">
           <div class="col-2">
             <img :src="songList.coverImgUrl" class="img-fluid" alt="">
           </div>
@@ -110,7 +109,7 @@
             <br>
             <span class="small text-muted">{{songList.trackCount}}首,by {{songList.creator.nickname}}</span>
           </div>
-				</div>
+        </div>
       </div>
     </div>
   </div>
@@ -118,74 +117,71 @@
 <script>
 export default {
   name: 'Myhome',
-  components: {
-    
-  },
-  data() {
+  data () {
     return {
-      detail:[],
-      songLists:[],
-      likeList:[],
-      likeListPic:'',
-      likeListCount:'',
-      sessionUid:sessionStorage.getItem('userId'),
-      sessionCookie:sessionStorage.getItem('userCookie'),
-      isLogin:false
+      detail: [],
+      songLists: [],
+      likeList: [],
+      likeListPic: '',
+      likeListCount: '',
+      sessionUid: sessionStorage.getItem('userId'),
+      sessionCookie: sessionStorage.getItem('userCookie'),
+      isLogin: false
     }
   },
-  mounted() {
+  mounted () {
     this.checkLogin(),
     this.getUserDetail(),
     this.getLikelist(),
     this.getSongList(),
     this.getFirstSong(),
-    console.log(this.likeListPic);
+    console.log(this.likeListPic)
   },
   methods: {
-    checkLogin:function(){
+    checkLogin: function () {
       // console.log(this.sessionCookie);
-      if(this.sessionCookie == null){
-        this.$router.push({path: '/login'});
+      if (this.sessionCookie == null) {
+        this.$router.push({path: '/login'})
       }
     },
 
-    getUserDetail:function(){
-      var that = this;
-      axios.get("http://localhost:3000/user/detail?uid="+ this.sessionUid).then
-      (function (response){
+    getUserDetail: function () {
+      var that = this
+      axios.get('http://localhost:3000/user/detail?uid=' + this.sessionUid).then
+      (function (response) {
         that.detail = response.data
         // console.log(response)
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
 
-    getLikelist:function(){
-      var that = this;
-      axios.get("http://localhost:3000/likelist?uid=" + this.sessionUid + "&cookie=" + this.sessionCookie).then
-      (function (response){
+    getLikelist: function () {
+      var that = this
+      axios.get('http://localhost:3000/likelist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
+      (function (response) {
         that.likeList = response.data.ids
         that.likeListCount = response.data.ids.length
         console.log(response)
-      },function(err){
-        console.log(err);
-      })
-    },
-    
-    getFirstSong:function(){
-      var that = this;
-      axios.get("http://localhost:3000/song/detail?ids=1808465866").then
-      (function (response){
-        that.likeListPic = response.data.songs[0].al.picUrl
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
 
-    getSongList:function(){
-      var that = this;
-      axios.get("http://localhost:3000/user/playlist?uid=" + this.sessionUid + "&cookie=" + this.sessionCookie).then
-      ( function (response) {
+    getFirstSong: function () {
+      var that = this
+      axios.get('http://localhost:3000/song/detail?ids=1808465866').then
+      (function (response) {
+        that.likeListPic = response.data.songs[0].al.picUrl
+      }, function (err) {
+        console.log(err)
+      })
+    },
+
+    getSongList: function () {
+      var that = this
+      axios.get('http://localhost:3000/user/playlist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
+      (function (response) {
         that.songLists = response.data.playlist
         // console.log(response)
       }, function (err) {
@@ -193,10 +189,10 @@ export default {
       })
     },
     goList: function (listId) {
-      this.$router.push({path: '/singleList', query:{id: listId}})
+      this.$router.push({path: '/singleList', query: {id: listId}})
     }
   }
 }
 </script>
 <style lang='' scoped>
-</style>
+</style>;

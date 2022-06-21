@@ -64,89 +64,88 @@
 				</ul>
 			</div>
 
-
 		</div>
 	</div>
 </template>
 <script>
 export default {
-   name: 'NewBoard',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-      newSongs:[],
-			newCds:[],
-			newAlbums:[],
-			newSongsShow:true,
-			newCdsShow:false,
-			newAlbumsShow:false,
-     }
-   },
-   mounted() {
+  name: 'NewBoard',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      newSongs: [],
+      newCds: [],
+      newAlbums: [],
+      newSongsShow: true,
+      newCdsShow: false,
+      newAlbumsShow: false
+    }
+  },
+  mounted () {
     this.getNewSong(),
-		this.getNewCd(),
-		this.getNewAlbum()
-   },
-   methods: {
-    getNewSong:function(){
-			var that = this;
-			axios.get("http://localhost:3000/personalized/newsong?limit=5").then
-			(function (response){
-				// console.log(response)
-				that.newSongs = response.data.result
-			},function(err){
-				console.log(err);
-			})
+    this.getNewCd(),
+    this.getNewAlbum()
+  },
+  methods: {
+    getNewSong: function () {
+      var that = this
+      axios.get('http://localhost:3000/personalized/newsong?limit=5').then
+      (function (response) {
+        // console.log(response)
+        that.newSongs = response.data.result
+      }, function (err) {
+        console.log(err)
+      })
     },
-		getNewCd:function(){
-			var that = this;
-			axios.get("http://localhost:3000/top/album?offset=0&limit=5").then
-			(function (response){
-				// console.log(response)
-				that.newCds = response.data.weekData.slice(10,15)
-			},function(err){
-				console.log(err);
-			})
+    getNewCd: function () {
+      var that = this
+      axios.get('http://localhost:3000/top/album?offset=0&limit=5').then
+      (function (response) {
+        // console.log(response)
+        that.newCds = response.data.weekData.slice(10, 15)
+      }, function (err) {
+        console.log(err)
+      })
     },
-		getNewAlbum:function(){
-			var that = this;
-			axios.get("http://localhost:3000/album/list?limit=5").then
-			(function (response){
-				// console.log(response)
-				that.newAlbums = response.data.products
-			},function(err){
-				console.log(err);
-			})
+    getNewAlbum: function () {
+      var that = this
+      axios.get('http://localhost:3000/album/list?limit=5').then
+      (function (response) {
+        // console.log(response)
+        that.newAlbums = response.data.products
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-		goNewCds:function(){
-			this.newSongsShow = false;
-			this.newCdsShow = true;
-			this.newAlbumsShow = false;
-		},
+    goNewCds: function () {
+      this.newSongsShow = false
+      this.newCdsShow = true
+      this.newAlbumsShow = false
+    },
 
-		goNewSongs:function(){
-			this.newSongsShow = true;
-			this.newCdsShow = false;
-			this.newAlbumsShow = false;
-		},
+    goNewSongs: function () {
+      this.newSongsShow = true
+      this.newCdsShow = false
+      this.newAlbumsShow = false
+    },
 
-		goNewAlbums:function(){
-			this.newSongsShow = false;
-			this.newCdsShow = false;
-			this.newAlbumsShow = true;
-		},
-		playSong:function(songId){
-			this.$router.push({path: '/playView', query:{id:songId}});
-		}
-   }
-};
+    goNewAlbums: function () {
+      this.newSongsShow = false
+      this.newCdsShow = false
+      this.newAlbumsShow = true
+    },
+    playSong: function (songId) {
+      this.$router.push({path: '/playView', query: {id: songId}})
+    }
+  }
+}
 </script>
 <style lang='' scoped>
 </style>

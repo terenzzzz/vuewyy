@@ -1,6 +1,6 @@
 <template>
    <div class="boardDetail">
-      
+
       <!-- 导航栏 -->
       <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
          <div class="container">
@@ -56,44 +56,44 @@
 </template>
 <script>
 export default {
-   name: 'BoardDetail',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-        boardId:this.$route.query.boardId,
-        songs:[],
-        boardName:""
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
-      this.getListSongs()
-   },
-   methods: {
-     getListSongs:function(){
-      var that = this;
-      axios.get("http://localhost:3000/playlist/detail?id=" + this.boardId).then
-      (function (response){
+  name: 'BoardDetail',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      boardId: this.$route.query.boardId,
+      songs: [],
+      boardName: ''
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
+    this.getListSongs()
+  },
+  methods: {
+    getListSongs: function () {
+      var that = this
+      axios.get('http://localhost:3000/playlist/detail?id=' + this.boardId).then
+      (function (response) {
         console.log(response)
         that.boardName = response.data.playlist.name
         that.songs = response.data.playlist.tracks
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
-    },
-   }
-};
+    }
+  }
+}
 </script>
 <style lang='' scoped>
 </style>

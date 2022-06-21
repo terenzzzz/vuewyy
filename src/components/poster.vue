@@ -2,7 +2,7 @@
 <div class="swipe" id="swipe">
   <div class="img-box" id="swipe_img_box">
     <a>
-      <img v-for="(banner,index) in banners" :key="index" :src="banner.pic" 
+      <img v-for="(banner,index) in banners" :key="index" :src="banner.pic"
             v-show="currentIndex==index"  @mouseenter="clear" @mouseout="changeIndex"
             class="img-fluid px-4 " style="height:170px">
     </a>
@@ -21,74 +21,73 @@
 </template>
 <script>
 export default {
-   name: 'Poster',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-       banners:[],
-        currentIndex: 0,
-        interId: null
-     }
+  name: 'Poster',
+  components: {
 
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      banners: [],
+      currentIndex: 0,
+      interId: null
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
     this.getBanner()
     this.changeIndex()
-   },
-   methods: {
-     getBanner:function(){
-			var that = this;
-			axios.get("http://localhost:3000/banner?type=2").then
-			(function (response){
-				// console.log(response)
-				that.banners = response.data.banners
-			},function(err){
-				console.log(err);
-			})
+  },
+  methods: {
+    getBanner: function () {
+      var that = this
+      axios.get('http://localhost:3000/banner?type=2').then
+      (function (response) {
+        // console.log(response)
+        that.banners = response.data.banners
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    changeIndex:function(){
-      this.interId = setInterval(()=>{
-        this.currentIndex++;
-        if(this.currentIndex == this.banners.length){
-          this.currentIndex = 0;
+    changeIndex: function () {
+      this.interId = setInterval(() => {
+        this.currentIndex++
+        if (this.currentIndex === this.banners.length) {
+          this.currentIndex = 0
         }
-      },3000)
+      }, 3000)
     },
-    clear:function(){
+    clear: function () {
       clearInterval(this.interId)
     },
 
-    pre:function(){
-      if(this.currentIndex == 0){
-        this.currentIndex = this.banners.length;
+    pre: function () {
+      if (this.currentIndex === 0) {
+        this.currentIndex = this.banners.length
       }
-      this.currentIndex--;
+      this.currentIndex--
     },
-    next:function(){
+    next: function () {
       this.currentIndex++
-      if(this.currentIndex == this.banners.length){
-        this.currentIndex = 0;
+      if (this.currentIndex === this.banners.length) {
+        this.currentIndex = 0
       }
     },
-    goToIndex:function(index){
+    goToIndex: function (index) {
       this.currentIndex = index
     }
 
-   }
-};
+  }
+}
 </script>
 <style lang='' scoped>
 .item{

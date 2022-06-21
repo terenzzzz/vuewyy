@@ -27,53 +27,53 @@
             </div>
         </div>
     </div>
-      
+
 </div>
 </template>
 <script>
 export default {
-   name: 'RankBoard',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-       list:[],
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
+  name: 'RankBoard',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      list: []
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
     this.getList()
-   },
-   methods: {
-    getList:function(){
-      var that = this;
-      axios.get("http://localhost:3000/toplist/detail").then
-      (function (response){
+  },
+  methods: {
+    getList: function () {
+      var that = this
+      axios.get('http://localhost:3000/toplist/detail').then
+      (function (response) {
         console.log(response)
         that.list = response.data.list
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
 
-    goBoardDetail:function(id,name){
+    goBoardDetail: function (id, name) {
       this.$router.push({
-        path: "/boardDetail",
+        path: '/boardDetail',
         query: {boardId: id}
       })
     }
-   }
-};
+  }
+}
 </script>
 <style lang='' scoped>
 </style>

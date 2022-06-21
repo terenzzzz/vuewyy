@@ -15,7 +15,6 @@
 			</div>
 		</div>
     <div class="body">
-    
 
       <div class="info" @click="changeLrcShow">
         <!-- 歌曲封面 -->
@@ -41,7 +40,6 @@
         </div>
       </div>
 
-      
       <!-- 播放器 -->
      <div class="navbar fixed-bottom bg-light">
         <audio controls autoplay ref="audio" :src="songUrl" hidden="true">
@@ -67,110 +65,108 @@
         </div>
         <div class="mx-auto mt-1" ><p class="text-muted">@Terence{{year}}</p></div>
 			</div>
-      
+
     </div>
 
    </div>
 </template>
 <script>
 export default {
-   name: 'PlayView',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-       sessionUid: sessionStorage.getItem('userId'),
-       sessionCookie: sessionStorage.getItem('userCookie'),
-       isplaying:true,
-       songId: this.$route.query.id,
-       songUrl: "",
-       songDetail: [],
-       songLyric:[],
-       isLryShow:false
-     }
-   },
-   computed: {
+  name: 'PlayView',
+  components: {
 
-   },
-   watch: {
-     
-   },
-   mounted() {
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      sessionUid: sessionStorage.getItem('userId'),
+      sessionCookie: sessionStorage.getItem('userCookie'),
+      isplaying: true,
+      songId: this.$route.query.id,
+      songUrl: '',
+      songDetail: [],
+      songLyric: [],
+      isLryShow: false
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
     //  console.log(this.$refs);
-     this.getSongUrl(),
-     this.getSongDetail(),
-     this.getSongLyric()
-   },
-   methods: {
-    play:function(){
-      if(this.$refs.audio.paused){
+    this.getSongUrl(),
+    this.getSongDetail(),
+    this.getSongLyric()
+  },
+  methods: {
+    play: function () {
+      if (this.$refs.audio.paused) {
         this.$refs.audio.play()
         this.isplaying = true
-      }else{
+      } else {
         this.$refs.audio.pause()
         this.isplaying = false
       }
     },
 
-    getSongUrl:function(){
-      var that = this;
-      axios.get("http://localhost:3000/song/url?id=" + this.songId + "&cookie=" + this.sessionCookie).then
-      (function (response){
+    getSongUrl: function () {
+      var that = this
+      axios.get('http://localhost:3000/song/url?id=' + this.songId + '&cookie=' + this.sessionCookie).then
+      (function (response) {
         // console.log(response);
         that.songUrl = response.data.data[0].url
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
 
-    getSongDetail:function(){
-      var that = this;
-      axios.get("http://localhost:3000/song/detail?ids=" + this.songId ).then
-      (function (response){
-        console.log(response);
+    getSongDetail: function () {
+      var that = this
+      axios.get('http://localhost:3000/song/detail?ids=' + this.songId).then
+      (function (response) {
+        console.log(response)
         that.songDetail = response.data.songs[0]
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
-    getSongLyric:function(){
-      var that = this;
-      axios.get("http://localhost:3000/lyric?id=" + this.songId ).then
-      (function (response){
+    getSongLyric: function () {
+      var that = this
+      axios.get('http://localhost:3000/lyric?id=' + this.songId).then
+      (function (response) {
         // console.log(response);
         that.songLyric = response.data.lrc.lyric
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
-      
     },
 
-    fixLyric:function(){
-      let arr;
-      arr = this.songLyric.split(/[(\r\n)\r\n]+/).map((item,i)=>{
-        let min=item.slice(1,3);
-        let sec=item.slice(4,6);
-        let mill=item.slice(7,9);
-        let lrc=item.slice(11,item.length);
-        console.log(min,sec,mill,lrc);
-        return {min,sec,mill,lrc};
+    fixLyric: function () {
+      let arr
+      arr = this.songLyric.split(/[(\r\n)\r\n]+/).map((item, i) => {
+        let min = item.slice(1, 3)
+        let sec = item.slice(4, 6)
+        let mill = item.slice(7, 9)
+        let lrc = item.slice(11, item.length)
+        console.log(min, sec, mill, lrc)
+        return {min, sec, mill, lrc}
       })
       // console.log(arr)
       return arr
     },
 
-    changeLrcShow:function(){
-      this.isLryShow = ! this.isLryShow
-    },
+    changeLrcShow: function () {
+      this.isLryShow = !this.isLryShow
+    }
 
-    
-   }
-};
+  }
+}
 </script>
 <style lang='' scoped>
 .musicLyric{

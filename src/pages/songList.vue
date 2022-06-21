@@ -21,7 +21,7 @@
 				<div class="row g-0">
 					<div class="col-2" v-for="(category,index) in categories" :key="category"><span>{{category.name}}</span></div>
 					<div class="col-2"><span @click="getAllCategories"><i class="fa-solid fa-bars" ></i></span></div>
-				</div> 
+				</div>
 				<div class="row g-0  mt-1 border-bottom px-2" v-show="allShow">
 					<div class="col-2" v-for="(all,index) in allCategories" :key="all"><span>{{all.name}}</span></div>
 				</div>
@@ -31,58 +31,57 @@
 </template>
 <script>
 export default {
-   name: 'SongList',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-       categories:[],
-			 allCategories:[],
-			 allShow:false
-			 
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
-     this.getCategories()
-   },
-   methods: {
-     getCategories:function(){
-      var that = this;
-      axios.post("http://localhost:3000/playlist/hot").then
-      (function (response){
+  name: 'SongList',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      categories: [],
+      allCategories: [],
+      allShow: false
+
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
+    this.getCategories()
+  },
+  methods: {
+    getCategories: function () {
+      var that = this
+      axios.post('http://localhost:3000/playlist/hot').then
+      (function (response) {
         // console.log(response)
-				that.categories = response.data.tags.slice(0,5)
-      },function(err){
-        console.log(err);
+        that.categories = response.data.tags.slice(0, 5)
+      }, function (err) {
+        console.log(err)
       })
     },
 
-		getAllCategories:function(){
-      var that = this;
-      axios.post("http://localhost:3000/playlist/hot").then
-      (function (response){
+    getAllCategories: function () {
+      var that = this
+      axios.post('http://localhost:3000/playlist/hot').then
+      (function (response) {
         console.log(response)
-				that.allCategories = response.data.tags.slice(5,10)
-				that.allShow = !that.allShow
-      },function(err){
-        console.log(err);
+        that.allCategories = response.data.tags.slice(5, 10)
+        that.allShow = !that.allShow
+      }, function (err) {
+        console.log(err)
       })
-    },
+    }
 
-		
-   }
-};
+  }
+}
 </script>
 <style lang='' scoped>
 </style>

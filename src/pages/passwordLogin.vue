@@ -41,7 +41,7 @@
           <i class="fa-brands fa-weibo fa-2x mx-2"></i>
           <i class="fa-brands fa-apple fa-2x mx-2"></i>
           <br>
-          <span class="text-muted">登录遇到问题？</span> 
+          <span class="text-muted">登录遇到问题？</span>
         </div>
 
       </div>
@@ -50,55 +50,55 @@
 </template>
 <script>
 export default {
-   name: 'PasswordLogIn',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-      mobile:"",
-      password:"",
-      isLogin:false
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
-    
-   },
-   methods: {
-    getLogIn:function(){
-      var that = this;
-			axios.get("http://localhost:3000/login/cellphone?phone=" + this.mobile + "&password=" + this.password).then
-			(function (response){
-				// console.log(response);
-        if (response.status == 200){
-          that.isLogin=true
+  name: 'PasswordLogIn',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      mobile: '',
+      password: '',
+      isLogin: false
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
+
+  },
+  methods: {
+    getLogIn: function () {
+      var that = this
+      axios.get('http://localhost:3000/login/cellphone?phone=' + this.mobile + '&password=' + this.password).then
+      (function (response) {
+        // console.log(response);
+        if (response.status === 200) {
+          that.isLogin = true
           window.sessionStorage.setItem('userId', response.data.account.id)
           window.sessionStorage.setItem('userCookie', encodeURIComponent(response.data.cookie))
           that.goIndex()
         }
-			},function(err){
-				console.log(err);
-			})
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    goIndex:function(){
-      this.$router.push({path: '/'});
-      if(this.$route.fullPath == '/'){
-        window.location.reload();
+    goIndex: function () {
+      this.$router.push({path: '/'})
+      if (this.$route.fullPath === '/') {
+        window.location.reload()
       }
     }
-   }
-};
+  }
+}
 </script>
 <style lang='' scoped>
   .body{

@@ -32,66 +32,64 @@
 </template>
 <script>
 export default {
-   name: 'SideBar',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-       searchKeyword:"",
-       keyword:"",
-       sessionUid: sessionStorage.getItem('userId'),
-       sessionCookie: sessionStorage.getItem('userCookie'),
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
+  name: 'SideBar',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      searchKeyword: '',
+      keyword: '',
+      sessionUid: sessionStorage.getItem('userId'),
+      sessionCookie: sessionStorage.getItem('userCookie')
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
     this.getSearchKeyword()
-   },
-   methods: {
-    getSearchKeyword:function(){
-			var that = this;
-			axios.get("http://localhost:3000/search/default").then
-			(function (response){
-				// console.log(response)
-				that.searchKeyword = response.data.data.showKeyword
-        
-			},function(err){
-				console.log(err);
-			})
-    },
-    
-    logOut:function(){
-			axios.post("http://localhost:3000/logout?cookie=" + this.sessionCookie).then
-			(function (response){
-				console.log(response)
-			},function(err){
-				console.log(err);
-			})
-			window.location.reload();
-      sessionStorage.clear();
+  },
+  methods: {
+    getSearchKeyword: function () {
+      var that = this
+      axios.get('http://localhost:3000/search/default').then
+      (function (response) {
+        // console.log(response)
+        that.searchKeyword = response.data.data.showKeyword
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    goResult:function(word){
-      this.$router.push({path: '/searchResult', query:{keyWord:word}});
-      if(this.$route.fullPath == '/searchResult?keyWord=' + word){
-        window.location.reload();
+    logOut: function () {
+      axios.post('http://localhost:3000/logout?cookie=' + this.sessionCookie).then
+      (function (response) {
+        console.log(response)
+      }, function (err) {
+        console.log(err)
+      })
+      window.location.reload()
+      sessionStorage.clear()
+    },
+
+    goResult: function (word) {
+      this.$router.push({path: '/searchResult', query: {keyWord: word}})
+      if (this.$route.fullPath == '/searchResult?keyWord=' + word) {
+        window.location.reload()
       }
-    },
+    }
 
-   }
-};
+  }
+}
 </script>
 <style lang='' scoped>
-
 
 </style>

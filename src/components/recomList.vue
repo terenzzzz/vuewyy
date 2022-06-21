@@ -11,56 +11,54 @@
 
       <div class="h-100" style="width: 100%;overflow-x: auto;overflow-y: hidden;white-space: nowrap;">
         <div v-for="(recomend,index) in recomList" :key="recomend"  style="width:28%; margin-right: 10px;display: inline-block;vertical-align:top" @click="goList(recomend.id)">
-              <img :src= 'recomend.picUrl' class="img-fluid" alt="" > 
+              <img :src= 'recomend.picUrl' class="img-fluid" alt="" >
               <p style="word-break: break-all; white-space: normal;">{{recomend.name}}</p>
         </div>
       </div>
-
-      
 		</div>
    </div>
 </template>
 <script>
 export default {
-   name: 'RecomList',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-      recomList:[],
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
+  name: 'RecomList',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      recomList: []
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
     this.getRecomList()
-   },
+  },
   methods: {
-		getRecomList:function(){
-			var that = this;
-			axios.get("http://localhost:3000/personalized?limit=10").then
-			(function (response){
-				// console.log(response)
-				that.recomList = response.data.result
-			},function(err){
-				console.log(err);
-			})
+    getRecomList: function () {
+      var that = this
+      axios.get('http://localhost:3000/personalized?limit=10').then
+      (function (response) {
+        // console.log(response)
+        that.recomList = response.data.result
+      }, function (err) {
+        console.log(err)
+      })
     },
-    goList:function(listId){
-		  this.$router.push({path: '/singleList', query:{id:listId}});
-		}
-    
+    goList: function (listId) {
+		  this.$router.push({path: '/singleList', query: {id: listId}})
+    }
+
   }
-};
+}
 </script>
 <style lang='' scoped>
 #list{

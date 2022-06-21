@@ -1,19 +1,19 @@
 <template>
-	<div class="recomend">
-		<!-- 导航栏 -->
-	 	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
-			<div class="container">
-				<div class="col-2">
-					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
-				</div>
-				<div class="col-8">
-					今日推荐
-				</div>
-				<div class="col-2">
-					<i class="fa-solid fa-ellipsis-vertical"></i>
-				</div>
+<div class="recomend">
+	<!-- 导航栏 -->
+	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
+		<div class="container">
+			<div class="col-2">
+				<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
+			</div>
+			<div class="col-8">
+				今日推荐
+			</div>
+			<div class="col-2">
+				<i class="fa-solid fa-ellipsis-vertical"></i>
 			</div>
 		</div>
+	</div>
 
 		<div class="body">
 			<!-- 日期 -->
@@ -62,45 +62,45 @@
 			</div>
 		</div>
 
-	</div>	
+	</div>
 
 </template>
 <script>
 export default {
   name: 'Recomend',
-  data() {
+  data () {
     return {
-		month:new Date().getMonth() + 1,
-		date:new Date().getDate(),
-		recomSongs: [],
+      month: new Date().getMonth() + 1,
+      date: new Date().getDate(),
+      recomSongs: []
     }
   },
-  mounted() {
+  mounted () {
     this.getRecomSongs()
   },
   methods: {
-    getRecomSongs:function(){
-      var that = this;
-      axios.post("http://localhost:3000/recommend/songs").then
-      (function (response){
+    getRecomSongs: function () {
+      var that = this
+      axios.post('http://localhost:3000/recommend/songs').then
+      (function (response) {
         that.recomSongs = response.data.data.dailySongs
         console.log(response)
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
     },
-	playSong:function(songId){
-		this.$router.push({path: '/playView', query:{id:songId}});
-		// if(this.$route.fullPath == '/searchResult?id=' + songId){
-		// 	window.location.reload();
-		// }
-	}
+    playSong: function (songId) {
+      this.$router.push({path: '/playView', query: {id: songId}})
+      // if(this.$route.fullPath == '/searchResult?id=' + songId){
+      // 	window.location.reload();
+      // }
+    }
   }
-};
+}
 </script>
 <style lang='' scoped>
-	.body{
-		padding-top: 30px;
-		padding-bottom: 120px;
-	}
+.body{
+padding-top: 30px;
+padding-bottom: 120px;
+}
 </style>

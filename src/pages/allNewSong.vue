@@ -25,9 +25,9 @@
           <div class="col-2" @click="newEa"><span>欧美</span></div>
           <div class="col-2" @click="newJp"><span>日本</span></div>
           <div class="col-2" @click="newKr"><span>韩国</span></div>
-        </div> 
+        </div>
       </div>
-      
+
       <!-- 全部列表 -->
       <div class="card m-2" v-for="(allsong,index) in allsongs" :key="allsong" v-show="newShow == '全部'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(allsong.id)">
@@ -118,108 +118,103 @@
         </div>
       </div>
 
-
     </div>
    </div>
 </template>
 <script>
 export default {
-   name: 'AllNewSong',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-       allsongs:[],
-       cns:[],
-       eas:[],
-       krs:[],
-       jps:[],
-       newShow:"全部"
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
-     this.newAll()
-   },
-   methods: {
-     newAll:function(){
-      var that = this;
-			axios.get("http://localhost:3000/top/song?type=0").then
-			(function (response){
+  name: 'AllNewSong',
+  components: {
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      allsongs: [],
+      cns: [],
+      eas: [],
+      krs: [],
+      jps: [],
+      newShow: '全部'
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
+    this.newAll()
+  },
+  methods: {
+    newAll: function () {
+      var that = this
+      axios.get('http://localhost:3000/top/song?type=0').then
+      (function (response) {
         // console.log(response)
         that.allsongs = response.data.data
-        that.newShow = "全部"
-			},function(err){
-				console.log(err);
-			})
+        that.newShow = '全部'
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    newCn:function(){
-      var that = this;
-			axios.get("http://localhost:3000/top/song?type=7").then
-			(function (response){
+    newCn: function () {
+      var that = this
+      axios.get('http://localhost:3000/top/song?type=7').then
+      (function (response) {
         // console.log(response)
         that.cns = response.data.data
-        that.newShow = "华语"
-			},function(err){
-				console.log(err);
-			})
+        that.newShow = '华语'
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    newEa:function(){
-      var that = this;
-			axios.get("http://localhost:3000/top/song?type=96").then
-			(function (response){
+    newEa: function () {
+      var that = this
+      axios.get('http://localhost:3000/top/song?type=96').then
+      (function (response) {
         console.log(response)
         that.eas = response.data.data
-        that.newShow = "欧美"
-			},function(err){
-				console.log(err);
-			})
+        that.newShow = '欧美'
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    newJp:function(){
-      var that = this;
-			axios.get("http://localhost:3000/top/song?type=8").then
-			(function (response){
+    newJp: function () {
+      var that = this
+      axios.get('http://localhost:3000/top/song?type=8').then
+      (function (response) {
         console.log(response)
         that.jps = response.data.data
-        that.newShow = "日本"
-			},function(err){
-				console.log(err);
-			})
+        that.newShow = '日本'
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    newKr:function(){
-      var that = this;
-			axios.get("http://localhost:3000/top/song?type=16").then
-			(function (response){
+    newKr: function () {
+      var that = this
+      axios.get('http://localhost:3000/top/song?type=16').then
+      (function (response) {
         console.log(response)
         that.krs = response.data.data
-        that.newShow = "韩国"
-			},function(err){
-				console.log(err);
-			})
+        that.newShow = '韩国'
+      }, function (err) {
+        console.log(err)
+      })
     },
-    playSong:function(songId){
-		this.$router.push({path: '/playView', query:{id:songId}});
-		// if(this.$route.fullPath == '/searchResult?id=' + songId){
-		// 	window.location.reload();
-		// }
-	}
+    playSong: function (songId) {
+      this.$router.push({path: '/playView', query: {id: songId}})
+    }
 
-   }
-};
+  }
+}
 </script>
 <style lang='' scoped>
 </style>

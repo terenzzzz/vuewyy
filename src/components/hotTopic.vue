@@ -15,7 +15,7 @@
             <i class="fa-solid fa-hashtag"></i><span class="small me-1">{{topic.title}}</span>
             <span class="small text-muted">{{topic.participateCount}}热度</span>
           </div>
-          
+
         </div>
         <br>
         <div class="w-50" v-for="(topic,index) in hotTopics.slice(3,6)" :key="topic" style="width:28%;height:30px; margin-right: 30px;display: inline-block;">
@@ -32,47 +32,40 @@
           </div>
         </div>
       </div>
-
-
-        
-
-
-			
-
 		</div>
   </div>
 
 </template>
 <script>
 export default {
-   name: 'HotTopic',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-      hotTopics:[]
-     }
-   },
-   mounted() {
+  name: 'HotTopic',
+  components: {
+
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      hotTopics: []
+    }
+  },
+  mounted () {
     this.getHotTopic()
-   },
-   methods: {
-    getHotTopic:function(){
-      var that = this;
-      axios.get("http://localhost:3000/hot/topic?limit=9").then
-      (function (response){
+  },
+  methods: {
+    getHotTopic: function () {
+      var that = this
+      axios.get('http://localhost:3000/hot/topic?limit=9').then
+      (function (response) {
         // console.log(response)
         that.hotTopics = response.data.hot
-      },function(err){
-        console.log(err);
+      }, function (err) {
+        console.log(err)
       })
-   }
-	}
+    }
+  }
 }
 </script>
 <style lang='' scoped>

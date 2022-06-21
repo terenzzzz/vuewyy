@@ -20,48 +20,45 @@
 			<NewBoard></NewBoard>
       		<HotTopic></HotTopic>
 			<LeaderBoard></LeaderBoard>
-	
+
 		</div>
-	</div>	
+	</div>
 
 </template>
 
-
 <script>
-import RecomList from "../components/RecomList"
-import NewBoard from "../components/NewBoard"
-import LeaderBoard from "../components/LeaderBoard"
-import HotTopic from "../components/HotTopic"
-import SideBar from "../components/SideBar"
-import Poster from "../components/Poster"
+import RecomList from '../components/RecomList'
+import NewBoard from '../components/NewBoard'
+import LeaderBoard from '../components/LeaderBoard'
+import HotTopic from '../components/HotTopic'
+import SideBar from '../components/SideBar'
+import Poster from '../components/Poster'
 
 export default {
   name: 'Index',
-	components:{
+  components: {
     RecomList,
-	NewBoard,
-	LeaderBoard,
+    NewBoard,
+    LeaderBoard,
     HotTopic,
-	SideBar,
-  Poster
+    SideBar,
+    Poster
 
   },
-  data() {
+  data () {
     return {
 	    sessionUid: sessionStorage.getItem('userId'),
-      sessionCookie: sessionStorage.getItem('userCookie'),
+      sessionCookie: sessionStorage.getItem('userCookie')
     }
-	},
-  mounted() {
-   },
-   methods: {
+  },
+  mounted () {
+  },
+  methods: {
 
   }
 }
 
 </script>
 <style lang='' scoped>
-
-
 
 </style>

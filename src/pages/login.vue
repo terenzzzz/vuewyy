@@ -7,7 +7,7 @@
                 <a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
               </div>
               <div class="col-8">
-                
+
               </div>
               <div class="col-2">
                 立即体验
@@ -22,7 +22,7 @@
         <button class="btn btn-primary">邮箱登录</button>
         <span class="text-muted m-0 p-0">*我已同意服务条款，隐私政策</span>
       </div>
-      
+
       <div class="iconList mt-5 pt-5">
         <i class="fa-brands fa-qq fa-2x mx-2"></i>
         <i class="fa-brands fa-weibo fa-2x mx-2"></i>
@@ -37,30 +37,30 @@
 export default {
   name: 'Login',
   components: {
-    
+
   },
   mixins: [],
   props: {
-    
+
   },
-  data() {
+  data () {
     return {
-      
+
     }
   },
   computed: {
-    
+
   },
   watch: {
-    
+
   },
-  mounted() {
-    
+  mounted () {
+
   },
   methods: {
-    
+
   }
-};
+}
 </script>
 <style lang='' scoped>
 </style>
