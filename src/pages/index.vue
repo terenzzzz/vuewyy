@@ -27,12 +27,12 @@
 </template>
 
 <script>
-import RecomList from '../components/RecomList'
-import NewBoard from '../components/NewBoard'
-import LeaderBoard from '../components/LeaderBoard'
-import HotTopic from '../components/HotTopic'
-import SideBar from '../components/SideBar'
-import Poster from '../components/Poster'
+import RecomList from '../components/recomList'
+import NewBoard from '../components/newBoard'
+import LeaderBoard from '../components/leaderBoard'
+import HotTopic from '../components/hotTopic'
+import SideBar from '../components/sideBar'
+import Poster from '../components/poster'
 
 export default {
   name: 'Index',
