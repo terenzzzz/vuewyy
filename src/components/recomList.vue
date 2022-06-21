@@ -10,7 +10,7 @@
 			</div>
 
       <div class="h-100" style="width: 100%;overflow-x: auto;overflow-y: hidden;white-space: nowrap;">
-        <div v-for="(recomend,index) in recomList" :key="recomend"  style="width:28%; margin-right: 10px;display: inline-block;vertical-align:top" @click="goList(recomend.id)">
+        <div v-for="recomend in recomList" :key="recomend"  style="width:28%; margin-right: 10px;display: inline-block;vertical-align:top" @click="goList(recomend.id)">
               <img :src= 'recomend.picUrl' class="img-fluid" alt="" >
               <p style="word-break: break-all; white-space: normal;">{{recomend.name}}</p>
         </div>
@@ -18,6 +18,8 @@
 		</div>
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'RecomList',
@@ -54,7 +56,7 @@ export default {
       })
     },
     goList: function (listId) {
-		  this.$router.push({path: '/singleList', query: {id: listId}})
+      this.$router.push({path: '/singleList', query: {id: listId}})
     }
 
   }

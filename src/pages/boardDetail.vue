@@ -40,7 +40,7 @@
 							<div class="col-7 ">
 								<span class="small">{{song.al.name}}</span>
 								<br>
-								<span class="small text-muted m-1" v-for="(artist,index) in song.ar" :key="artist">{{artist.name}}</span>
+								<span class="small text-muted m-1" v-for="artist in song.ar" :key="artist">{{artist.name}}</span>
 							</div>
 							<div class="col-2">
 								<i class="fa-brands fa-youtube pe-2"></i>
@@ -54,6 +54,8 @@
       </div>
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'BoardDetail',

@@ -19,6 +19,8 @@
   </div>
 </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'Poster',

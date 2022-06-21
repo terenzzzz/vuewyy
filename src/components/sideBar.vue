@@ -30,6 +30,8 @@
 
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'SideBar',
@@ -82,7 +84,7 @@ export default {
 
     goResult: function (word) {
       this.$router.push({path: '/searchResult', query: {keyWord: word}})
-      if (this.$route.fullPath == '/searchResult?keyWord=' + word) {
+      if (this.$route.fullPath === '/searchResult?keyWord=' + word) {
         window.location.reload()
       }
     }

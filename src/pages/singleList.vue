@@ -1,7 +1,7 @@
 <template>
    <div class="singleList">
      <!-- 导航栏 -->
-	 	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
+    <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
 			<div class="container">
 				<div class="col-2">
 					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
@@ -49,7 +49,7 @@
       <!-- 歌曲列表 -->
       <div class="row align-items-center ps-2 pe-2 g-1">
 				<ul class="list-unstyled ">
-					<li v-for="(listSong,index) in listSongs" :key="listSong">
+					<li v-for="listSong in listSongs" :key="listSong">
 						<div class="row align-items-center mt-2 ps-2 pe-2 g-1" @click="playSong(listSong.id)">
 							<div class="col-2">
 								<img :src="listSong.al.picUrl" class="img-fluid" alt="">
@@ -57,7 +57,7 @@
 							<div class="col-8 ">
 								<span class="small">{{listSong.name}}</span>
 								<br>
-								<span class="small text-muted m-1" v-for="(artist,index) in listSong.ar" :key="artist">{{artist.name}}</span>
+								<span class="small text-muted m-1" v-for="artist in listSong.ar" :key="artist">{{artist.name}}</span>
 							</div>
               <div class="col-2">
                 <i class="fa-brands fa-youtube pe-2"></i>
@@ -71,6 +71,8 @@
     </div>
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'SingleList',

@@ -100,7 +100,7 @@
           <div class="col-2"><i class="fa-solid fa-ellipsis-vertical"></i></div>
         </div>
 
-        <div class="row ps-3 d-flex align-items-center g-0 mb-2" v-for="(songList, index) in songLists" :key="songList" @click="goList(songList.id)">
+        <div class="row ps-3 d-flex align-items-center g-0 mb-2" v-for="songList in songLists" :key="songList" @click="goList(songList.id)">
           <div class="col-2">
             <img :src="songList.coverImgUrl" class="img-fluid" alt="">
           </div>
@@ -114,6 +114,8 @@
     </div>
   </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'Myhome',

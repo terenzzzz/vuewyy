@@ -41,7 +41,7 @@
 			<!-- 音乐列表 -->
 			<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
 				<ul class="list-unstyled ">
-					<li v-for="(recomSong,index) in recomSongs " :key="recomSong">
+					<li v-for="recomSong in recomSongs " :key="recomSong">
 						<div class="row align-items-center mt-2 ps-2 pe-2 g-1" @click="playSong(recomSong.id)">
 							<div class="col-2">
 								<img :src="recomSong.al.picUrl" class="img-fluid" alt="">
@@ -49,7 +49,7 @@
 							<div class="col-8 ">
 								<span class="small">{{recomSong.name}}</span>
 								<br>
-								<span class="small text-muted me-1" v-for="(artist,index) in recomSong.ar" :key="artist">{{artist.name}}</span>
+								<span class="small text-muted me-1" v-for="artist in recomSong.ar" :key="artist">{{artist.name}}</span>
 							</div>
 							<div class="col-2">
 								<i class="fa-brands fa-youtube pe-2"></i>
@@ -65,6 +65,8 @@
 	</div>
 
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'Recomend',

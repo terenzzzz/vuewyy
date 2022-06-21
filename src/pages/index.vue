@@ -18,7 +18,7 @@
 			</div>
 			<RecomList></RecomList>
 			<NewBoard></NewBoard>
-      		<HotTopic></HotTopic>
+      <HotTopic></HotTopic>
 			<LeaderBoard></LeaderBoard>
 
 		</div>
@@ -47,7 +47,7 @@ export default {
   },
   data () {
     return {
-	    sessionUid: sessionStorage.getItem('userId'),
+      sessionUid: sessionStorage.getItem('userId'),
       sessionCookie: sessionStorage.getItem('userCookie')
     }
   },

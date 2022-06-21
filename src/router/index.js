@@ -17,9 +17,7 @@ import AllNewSong from '@/pages/allNewSong'
 import PlayView from '@/pages/playView'
 import SingleList from '@/pages/singleList'
 import MyLike from '@/pages/myLike'
-
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {path: '/', name: 'Index', component: Index},

@@ -12,7 +12,7 @@
         <div>
           <div class="overflow-scroll" >
             <div class="row" style="width: 100%;overflow-x: auto;overflow-y: hidden; white-space: nowrap;display: inline-block;">
-              <div class="col-5 border mx-2" v-for="(list,index) in lists" :key="list" style="display: inline-block;vertical-align: top;" @click="goList(list.id)">
+              <div class="col-5 border mx-2" v-for="list in lists" :key="list" style="display: inline-block;vertical-align: top;" @click="goList(list.id)">
                 <div class="row mt-2">
                   <img :src="list.coverImgUrl" class="img-fluid"  alt="">
                   <h5>{{list.name}}</h5>
@@ -27,6 +27,8 @@
 			</div>
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'LeaderBoard',
@@ -67,15 +69,14 @@ export default {
 
     getListSongs1: function (id) {
       var that = this
-      axios.get('http://localhost:3000/playlist/detail?id=' + id).then
-      (function (response) {
+      axios.get('http://localhost:3000/playlist/detail?id=' + id).then(function (response) {
         that.listSongs1 = response.data.playlist.tracks.slice(0, 5)
       }, function (err) {
         console.log(err)
       })
     },
     goList: function (listId) {
-		  this.$router.push({path: '/singleList', query: {id: listId}})
+      this.$router.push({path: '/singleList', query: {id: listId}})
     }
   }
 }

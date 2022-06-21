@@ -1,7 +1,7 @@
 <template>
    <div class="playView">
      <!-- 导航栏 -->
-	 	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
+    <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
 			<div class="container">
 				<div class="col-2">
 					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
@@ -28,13 +28,13 @@
         <div class="row" >
           <span class="fw-bold mt-1">{{songDetail.name}}</span>
             <br>
-          <span class="small text-muted me-2" v-for="(artist,index) in songDetail.ar" :key="artist">{{artist.name}}</span>
+          <span class="small text-muted me-2" v-for="artist in songDetail.ar" :key="artist">{{artist.name}}</span>
         </div>
 
         <!-- 歌词 -->
         <div class="musicLyric mt-4">
           <p v-show="isLryShow==false">点击查看歌词</p>
-          <p class="lrc" v-for="(lyric,index) in fixLyric()" :key="lyric" v-show="isLryShow">
+          <p class="lrc" v-for="lyric in fixLyric()" :key="lyric" v-show="isLryShow">
             {{lyric.lrc}}
           </p>
         </div>
@@ -52,7 +52,7 @@
           <div class="col-4">
             <span>{{songDetail.name}}</span>
             <br>
-            <span class="small text-muted me-2" v-for="(artist,index) in songDetail.ar" :key="artist">{{artist.name}}</span>
+            <span class="small text-muted me-2" v-for="artist in songDetail.ar" :key="artist">{{artist.name}}</span>
           </div>
           <div class="col-2">
             <i class="fa-solid fa-circle-pause fa-2x" @click="play" v-show="isplaying"></i>
@@ -70,6 +70,8 @@
 
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'PlayView',

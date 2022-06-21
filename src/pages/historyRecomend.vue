@@ -1,7 +1,7 @@
 <template>
    <div class="historyRecomend">
      <!-- 导航栏 -->
-	 	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
+    <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
 			<div class="container">
 				<div class="col-2">
 					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
@@ -16,6 +16,8 @@
 		</div>
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'HistoryRecomend',

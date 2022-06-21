@@ -28,7 +28,7 @@
       </div>
 
       <!-- 音乐列表 -->
-      <div class="card mb-2" v-for="(song,index) in result" :key="song" v-show="typeShow == '单曲'">
+      <div class="card mb-2" v-for="song in result" :key="song" v-show="typeShow == '单曲'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(song.id)">
           <div class="col-2">
             <img :src="song.al.picUrl" class="img-fluid" alt="">
@@ -36,7 +36,7 @@
           <div class="col-8">
             <span>{{song.name}} - {{song.al.name}}</span>
             <br>
-            <span class="small text-muted m-1" v-for="(artist,index) in song.ar" :key="artist">{{artist.name}}</span>
+            <span class="small text-muted m-1" v-for="artist in song.ar" :key="artist">{{artist.name}}</span>
           </div>
           <div class="col-2">
             <i class="fa-brands fa-youtube pe-2"></i>
@@ -112,6 +112,8 @@
     </div>
   </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'SearchResult',

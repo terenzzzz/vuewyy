@@ -1,7 +1,7 @@
 <template>
 	<div class="songList">
 		<!-- 导航栏 -->
-	 	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
+    <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
 			<div class="container">
 				<div class="col-2">
 					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
@@ -19,16 +19,18 @@
 			<!-- 歌单分类 -->
 			<div class="category">
 				<div class="row g-0">
-					<div class="col-2" v-for="(category,index) in categories" :key="category"><span>{{category.name}}</span></div>
+					<div class="col-2" v-for="category in categories" :key="category"><span>{{category.name}}</span></div>
 					<div class="col-2"><span @click="getAllCategories"><i class="fa-solid fa-bars" ></i></span></div>
 				</div>
 				<div class="row g-0  mt-1 border-bottom px-2" v-show="allShow">
-					<div class="col-2" v-for="(all,index) in allCategories" :key="all"><span>{{all.name}}</span></div>
+					<div class="col-2" v-for="all in allCategories" :key="all"><span>{{all.name}}</span></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'SongList',

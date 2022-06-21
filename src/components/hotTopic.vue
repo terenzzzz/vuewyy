@@ -10,7 +10,7 @@
 			</div>
 
       <div class="row" style="width: 100%;overflow-x: auto;overflow-y: hidden; white-space: nowrap;display: inline-block;">
-        <div class="w-50" v-for="(topic,index) in hotTopics.slice(0,3)" :key="topic" style="width:28%;height:30px;margin-right: 30px;display: inline-block;">
+        <div class="w-50" v-for="topic in hotTopics.slice(0,3)" :key="topic" style="width:28%;height:30px;margin-right: 30px;display: inline-block;">
           <div class="d-flex justify-content-start" >
             <i class="fa-solid fa-hashtag"></i><span class="small me-1">{{topic.title}}</span>
             <span class="small text-muted">{{topic.participateCount}}热度</span>
@@ -18,14 +18,14 @@
 
         </div>
         <br>
-        <div class="w-50" v-for="(topic,index) in hotTopics.slice(3,6)" :key="topic" style="width:28%;height:30px; margin-right: 30px;display: inline-block;">
+        <div class="w-50" v-for="topic in hotTopics.slice(3,6)" :key="topic" style="width:28%;height:30px; margin-right: 30px;display: inline-block;">
           <div class="d-flex justify-content-start" >
             <i class="fa-solid fa-hashtag"></i><span class="small me-1">{{topic.title}}</span>
             <span class="small text-muted">{{topic.participateCount}}热度</span>
           </div>
         </div>
         <br>
-        <div class="w-50" v-for="(topic,index) in hotTopics.slice(6,9)" :key="topic" style="width:28%;height:30px; margin-right: 30px;display: inline-block;">
+        <div class="w-50" v-for="topic in hotTopics.slice(6,9)" :key="topic" style="width:28%;height:30px; margin-right: 30px;display: inline-block;">
           <div class="d-flex justify-content-start" >
             <i class="fa-solid fa-hashtag"></i><span class="small me-1">{{topic.title}}</span>
             <span class="small text-muted">{{topic.participateCount}}热度</span>
@@ -36,6 +36,8 @@
   </div>
 
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'HotTopic',

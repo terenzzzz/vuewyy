@@ -13,7 +13,7 @@
 			<!-- 新歌榜内容 -->
 			<div class="row align-items-center ps-2 pe-2 g-1" v-show="newSongsShow">
 				<ul class="list-unstyled ">
-					<li v-for="(newSong,index) in newSongs" :key="newSong">
+					<li v-for="newSong in newSongs" :key="newSong">
 						<div class="row align-items-center mt-2 ps-2 pe-2 g-1" @click="playSong(newSong.song.id)">
 							<div class="col-2">
 								<img :src="newSong.picUrl" class="img-fluid" alt="">
@@ -31,7 +31,7 @@
 			<!-- 新碟榜内容 -->
 			<div class="row align-items-center ps-2 pe-2 g-1" v-show="newCdsShow">
 				<ul class="list-unstyled ">
-					<li v-for="(newCd,index) in newCds" :key="newCd">
+					<li v-for="newCd in newCds" :key="newCd">
 						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
 							<div class="col-2">
 								<img :src="newCd.picUrl" class="img-fluid" alt="">
@@ -49,7 +49,7 @@
 			<!-- 新数字专辑内容 -->
 			<div class="row align-items-center ps-2 pe-2 g-1" v-show="newAlbumsShow">
 				<ul class="list-unstyled ">
-					<li v-for="(newAlbum,index) in newAlbums" :key="newAlbum">
+					<li v-for="newAlbum in newAlbums" :key="newAlbum">
 						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
 							<div class="col-2">
 								<img :src="newAlbum.coverUrl" class="img-fluid" alt="">
@@ -67,6 +67,8 @@
 		</div>
 	</div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'NewBoard',

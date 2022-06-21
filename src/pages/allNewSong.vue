@@ -1,7 +1,7 @@
 <template>
    <div>
      <!-- 导航栏 -->
-	 	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
+    <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
 			<div class="container">
 				<div class="col-2">
 					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
@@ -29,7 +29,7 @@
       </div>
 
       <!-- 全部列表 -->
-      <div class="card m-2" v-for="(allsong,index) in allsongs" :key="allsong" v-show="newShow == '全部'">
+      <div class="card m-2" v-for="allsong in allsongs" :key="allsong" v-show="newShow == '全部'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(allsong.id)">
           <div class="col-2">
             <img :src="allsong.album.picUrl" class="img-fluid " alt="">
@@ -37,7 +37,7 @@
           <div class="col-8">
             <span>{{allsong.name}}</span>
             <br>
-            <span class="small text-muted m-1" v-for="(artist,index) in allsong.artists" :key="artist">{{artist.name}}</span>
+            <span class="small text-muted m-1" v-for="artist in allsong.artists" :key="artist">{{artist.name}}</span>
           </div>
           <div class="col-2">
             <i class="fa-brands fa-youtube pe-2"></i>
@@ -47,7 +47,7 @@
       </div>
 
       <!-- 华语列表 -->
-      <div class="card m-2" v-for="(cn,index) in cns" :key="cn" v-show="newShow == '华语'">
+      <div class="card m-2" v-for="cn in cns" :key="cn" v-show="newShow == '华语'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(cn.id)">
           <div class="col-2">
             <img :src="cn.album.picUrl" class="img-fluid " alt="">
@@ -55,7 +55,7 @@
           <div class="col-8">
             <span>{{cn.name}}</span>
             <br>
-            <span class="small text-muted m-1" v-for="(artist,index) in cn.artists" :key="artist">{{artist.name}}</span>
+            <span class="small text-muted m-1" v-for="artist in cn.artists" :key="artist">{{artist.name}}</span>
           </div>
           <div class="col-2">
             <i class="fa-brands fa-youtube pe-2"></i>
@@ -65,7 +65,7 @@
       </div>
 
       <!-- 欧美列表 -->
-      <div class="card m-2" v-for="(ea,index) in eas" :key="ea" v-show="newShow == '欧美'">
+      <div class="card m-2" v-for="ea in eas" :key="ea" v-show="newShow == '欧美'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(ea.id)">
           <div class="col-2">
             <img :src="ea.album.picUrl" class="img-fluid " alt="">
@@ -73,7 +73,7 @@
           <div class="col-8">
             <span>{{ea.name}}</span>
             <br>
-            <span class="small text-muted m-1" v-for="(artist,index) in ea.artists" :key="artist">{{artist.name}}</span>
+            <span class="small text-muted m-1" v-for="artist in ea.artists" :key="artist">{{artist.name}}</span>
           </div>
           <div class="col-2">
             <i class="fa-brands fa-youtube pe-2"></i>
@@ -83,7 +83,7 @@
       </div>
 
        <!-- 日本列表 -->
-      <div class="card m-2" v-for="(jp,index) in jps" :key="jp" v-show="newShow == '日本'">
+      <div class="card m-2" v-for="jp in jps" :key="jp" v-show="newShow == '日本'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(jp.id)">
           <div class="col-2">
             <img :src="jp.album.picUrl" class="img-fluid " alt="">
@@ -91,7 +91,7 @@
           <div class="col-8">
             <span>{{jp.name}}</span>
             <br>
-            <span class="small text-muted m-1" v-for="(artist,index) in jp.artists" :key="artist">{{artist.name}}</span>
+            <span class="small text-muted m-1" v-for="artist in jp.artists" :key="artist">{{artist.name}}</span>
           </div>
           <div class="col-2">
             <i class="fa-brands fa-youtube pe-2"></i>
@@ -101,7 +101,7 @@
       </div>
 
        <!-- 韩国列表 -->
-      <div class="card m-2" v-for="(kr,index) in krs" :key="ea" v-show="newShow == '韩国'">
+      <div class="card m-2" v-for="kr in krs" :key="kr" v-show="newShow == '韩国'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(kr.id)">
           <div class="col-2">
             <img :src="kr.album.picUrl" class="img-fluid " alt="">
@@ -109,7 +109,7 @@
           <div class="col-8">
             <span>{{kr.name}}</span>
             <br>
-            <span class="small text-muted m-1" v-for="(artist,index) in kr.artists" :key="artist">{{artist.name}}</span>
+            <span class="small text-muted m-1" v-for="artist in kr.artists" :key="artist">{{artist.name}}</span>
           </div>
           <div class="col-2">
             <i class="fa-brands fa-youtube pe-2"></i>
@@ -121,6 +121,8 @@
     </div>
    </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
   name: 'AllNewSong',

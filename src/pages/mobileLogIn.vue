@@ -32,15 +32,13 @@
               </div>
             </div>
           </form>
-          
+
           <div class="row mx-3 py-5 g-2">
             <button class="btn btn-primary" @click="getCode"> 获取验证码</button>
             <button class="btn btn-primary" @click="logInWithCode"> 登录</button>
           </div>
         </div>
-        
 
-      
         <div class="iconList mt-5 pt-5 mb-5">
           <i class="fa-brands fa-qq fa-2x mx-2"></i>
           <i class="fa-brands fa-weibo fa-2x mx-2"></i>
@@ -52,67 +50,68 @@
     </div>
   </div>
 </template>
+<!-- 导入axios包 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 export default {
-   name: 'MobileLogIn',
-   components: {
-     
-   },
-   mixins: [],
-   props: {
-     
-   },
-   data() {
-     return {
-      mobile:"",
-      code:"",
-      userId:"",
-      isLogin:false
-     }
-   },
-   computed: {
-     
-   },
-   watch: {
-     
-   },
-   mounted() {
+  name: 'MobileLogIn',
+  components: {
 
-   },
-   methods: {
-    getCode:function(){
-      var that = this;
-			axios.get("http://localhost:3000/captcha/sent?phone=" + this.mobile).then
-			(function (response){
-				console.log(response)
-			},function(err){
-				console.log(err);
-			})
+  },
+  mixins: [],
+  props: {
+
+  },
+  data () {
+    return {
+      mobile: '',
+      code: '',
+      userId: '',
+      isLogin: false
+    }
+  },
+  computed: {
+
+  },
+  watch: {
+
+  },
+  mounted () {
+
+  },
+  methods: {
+    getCode: function () {
+      axios.get('http://localhost:3000/captcha/sent?phone=' + this.mobile).then
+      (function (response) {
+        console.log(response)
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    logInWithCode:function(){
-      var that = this;
-			axios.get("http://localhost:3000/login/cellphone?phone=" + this.mobile +"&password=" +  "&captcha="+ this.code).then
-			(function (response){
-        if (response.status == 200){
+    logInWithCode: function () {
+      var that = this
+      axios.get('http://localhost:3000/login/cellphone?phone=' + this.mobile + '&password=' + '&captcha=' + this.code).then
+      (function (response) {
+        if (response.status === 200) {
           window.sessionStorage.setItem('userId', response.data.account.id)
           window.sessionStorage.setItem('userCookie', encodeURIComponent(response.data.cookie))
           that.goIndex()
         }
-			},function(err){
-				console.log(err);
-			})
+      }, function (err) {
+        console.log(err)
+      })
     },
 
-    goIndex:function(){
-      this.$router.push({path: '/'});
-      if(this.$route.fullPath == '/'){
-        window.location.reload();
+    goIndex: function () {
+      this.$router.push({path: '/'})
+      if (this.$route.fullPath == '/') {
+        window.location.reload()
       }
     }
-    
-   }
-};
+
+  }
+}
 </script>
 <style lang='' scoped>
   .body{
