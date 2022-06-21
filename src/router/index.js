@@ -5,7 +5,7 @@ import Recomend from '@/pages/recomend'
 import Myhome from '@/pages/myhome'
 import Login from '@/pages/login'
 import MobileLogIn from '@/pages/mobileLogIn'
-import PasswordLogIn from '@/pages/passwordLogIn'
+import PasswordLogIn from '@/pages/passwordLogin'
 import RecentPlay from '@/pages/recentPlay'
 import SongList from '@/pages/songList'
 import TestSide from '@/pages/testSide'
@@ -14,10 +14,12 @@ import RankBoard from '@/pages/rankBoard'
 import BoardDetail from '@/pages/boardDetail'
 import SearchResult from '@/pages/searchResult'
 import AllNewSong from '@/pages/allNewSong'
-import PlayView from '@/pages/playView'
+import PlayView from '@/pages/playview'
 import SingleList from '@/pages/singleList'
 import MyLike from '@/pages/myLike'
+
 Vue.use(Router)
+
 export default new Router({
   routes: [
     {path: '/', name: 'Index', component: Index},
