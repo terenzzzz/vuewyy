@@ -15,7 +15,6 @@
         </div>
     </div>
     <div class="body">
-      <img src="../assets/beluga.JPG" class="rounded-circle mb-3" style="width:200px;" alt="Avatar" />
       <div class="d-grid gap-4 px-5 my-5 pt-5">
         <a href="#/mobileLogin" class="btn btn-primary">手机号登录</a>
         <a href="#/passwordLogin" class="btn btn-primary">密码登录</a>

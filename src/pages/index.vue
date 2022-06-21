@@ -29,7 +29,7 @@
 <script>
 import RecomList from '../components/recomList'
 import NewBoard from '../components/newBoard'
-import LeaderBoard from '../components/leaderBoard'
+import LeaderBoard from '../components/leaderboard'
 import HotTopic from '../components/hotTopic'
 import SideBar from '../components/sideBar'
 import Poster from '../components/poster'
