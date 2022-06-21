@@ -53,6 +53,6 @@ export default {
 
 .body{
   padding-top: 100px;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="sideBar">
     <!-- 搜索栏 -->
-    <div class="row bg-light pt-5 pb-3 navbar fixed-top g-0">
+    <div class="row bg-light pt-1 pb-3 navbar fixed-top g-0">
       <div class="row d-flex align-items-center navbar navbar-expand-lg navbar-light bg-light g-0 px-2">
         <div class="col-2">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
