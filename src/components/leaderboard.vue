@@ -58,7 +58,7 @@ export default {
   methods: {
     getList: function () {
       var that = this
-      axios.get('http://localhost:3000/toplist/detail').then
+      axios.get('https://wyyyyy.herokuapp.com/toplist/detail').then
       (function (response) {
         // console.log(response)
         that.lists = response.data.list.slice(0, 5)
@@ -69,7 +69,7 @@ export default {
 
     getListSongs1: function (id) {
       var that = this
-      axios.get('http://localhost:3000/playlist/detail?id=' + id).then(function (response) {
+      axios.get('https://wyyyyy.herokuapp.com/playlist/detail?id=' + id).then(function (response) {
         that.listSongs1 = response.data.playlist.tracks.slice(0, 5)
       }, function (err) {
         console.log(err)

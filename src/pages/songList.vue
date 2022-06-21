@@ -61,7 +61,7 @@ export default {
   methods: {
     getCategories: function () {
       var that = this
-      axios.post('http://localhost:3000/playlist/hot').then
+      axios.post('https://wyyyyy.herokuapp.com/playlist/hot').then
       (function (response) {
         // console.log(response)
         that.categories = response.data.tags.slice(0, 5)
@@ -72,7 +72,7 @@ export default {
 
     getAllCategories: function () {
       var that = this
-      axios.post('http://localhost:3000/playlist/hot').then
+      axios.post('https://wyyyyy.herokuapp.com/playlist/hot').then
       (function (response) {
         console.log(response)
         that.allCategories = response.data.tags.slice(5, 10)

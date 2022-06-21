@@ -102,7 +102,7 @@ export default {
   methods: {
     getList: function () {
       var that = this
-      axios.get('http://localhost:3000/playlist/detail?id=' + this.listId).then
+      axios.get('https://wyyyyy.herokuapp.com/playlist/detail?id=' + this.listId).then
       (function (response) {
         // console.log(response)
         that.listDetail = response.data.playlist

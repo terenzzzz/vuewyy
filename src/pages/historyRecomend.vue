@@ -52,7 +52,7 @@ export default {
       }
     },
     getHistoryList: function () {
-      axios.get('http://localhost:3000/history/recommend/songs/detail?date=' + this.year + '-' + this.month + '-' + this.date).then
+      axios.get('https://wyyyyy.herokuapp.com/history/recommend/songs/detail?date=' + this.year + '-' + this.month + '-' + this.date).then
       (function (response) {
         console.log(response)
       }, function (err) {

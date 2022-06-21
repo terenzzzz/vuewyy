@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     getCode: function () {
-      axios.get('http://localhost:3000/captcha/sent?phone=' + this.mobile).then
+      axios.get('https://wyyyyy.herokuapp.com/captcha/sent?phone=' + this.mobile).then
       (function (response) {
         console.log(response)
       }, function (err) {
@@ -91,7 +91,7 @@ export default {
 
     logInWithCode: function () {
       var that = this
-      axios.get('http://localhost:3000/login/cellphone?phone=' + this.mobile + '&password=' + '&captcha=' + this.code).then
+      axios.get('https://wyyyyy.herokuapp.com/login/cellphone?phone=' + this.mobile + '&password=' + '&captcha=' + this.code).then
       (function (response) {
         if (response.status === 200) {
           window.sessionStorage.setItem('userId', response.data.account.id)

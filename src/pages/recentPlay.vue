@@ -76,7 +76,7 @@ export default {
   methods: {
     getRecentSongs: function () {
       var that = this
-      axios.post('http://localhost:3000/user/record?uid=' + this.sessionUid + '&type=1').then
+      axios.post('https://wyyyyy.herokuapp.com/user/record?uid=' + this.sessionUid + '&type=1').then
       (function (response) {
         that.recentSongs = response.data.weekData
         console.log(response)
