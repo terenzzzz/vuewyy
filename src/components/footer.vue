@@ -32,8 +32,6 @@
 			</div>
 			<div class="col-1"></div>
 		</div>
-		<div class="mx-auto mb-0" ><p class="text-muted">@Terence{{year}}</p></div>
-
 	</div>
 
 </template>

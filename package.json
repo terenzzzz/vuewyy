@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "node build/build.js",
     "start": "node server.js"
+
   },
   "dependencies": {
     "element-ui": "^2.15.9",
