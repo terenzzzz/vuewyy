@@ -4,7 +4,7 @@
     <SideBar></SideBar>
 
     <div class="body">
-			<!-- 滚动播报 -->
+        <!-- 滚动播报 -->
       <Poster></Poster>
 
 			<!-- 导航栏 -->
