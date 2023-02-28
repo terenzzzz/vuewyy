@@ -1,19 +1,19 @@
 <template>
-   <div class="singleList">
-     <!-- 导航栏 -->
+  <div class="singleList">
+    <!-- 导航栏 -->
     <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
-			<div class="container">
-				<div class="col-2">
-					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
-				</div>
-				<div class="col-8">
-					歌单
-				</div>
-				<div class="col-2">
-					<i class="fa-solid fa-ellipsis-vertical"></i>
-				</div>
-			</div>
-		</div>
+      <div class="container">
+        <div class="col-2">
+          <a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
+        <div class="col-8">
+          歌单
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+      </div>
+    </div>
 
     <div class="body">
       <!-- 歌单详情 -->
@@ -48,28 +48,28 @@
 
       <!-- 歌曲列表 -->
       <div class="row align-items-center ps-2 pe-2 g-1">
-				<ul class="list-unstyled ">
-					<li v-for="listSong in listSongs" :key="listSong">
-						<div class="row align-items-center mt-2 ps-2 pe-2 g-1" @click="playSong(listSong.id)">
-							<div class="col-2">
-								<img :src="listSong.al.picUrl" class="img-fluid" alt="">
-							</div>
-							<div class="col-8 ">
-								<span class="small">{{listSong.name}}</span>
-								<br>
-								<span class="small text-muted m-1" v-for="artist in listSong.ar" :key="artist">{{artist.name}}</span>
-							</div>
+        <ul class="list-unstyled ">
+          <li v-for="listSong in listSongs" :key="listSong">
+            <div class="row align-items-center mt-2 ps-2 pe-2 g-1" @click="playSong(listSong.id)">
+              <div class="col-2">
+                <img :src="listSong.al.picUrl" class="img-fluid" alt="">
+              </div>
+              <div class="col-8 ">
+                <span class="small">{{listSong.name}}</span>
+                <br>
+                <span class="small text-muted m-1" v-for="artist in listSong.ar" :key="artist">{{artist.name}}</span>
+              </div>
               <div class="col-2">
                 <i class="fa-brands fa-youtube pe-2"></i>
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </div>
-						</div>
-					</li>
-				</ul>
-			</div>
+            </div>
+          </li>
+        </ul>
+      </div>
 
     </div>
-   </div>
+  </div>
 </template>
 <!-- 导入axios包 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -102,7 +102,7 @@ export default {
   methods: {
     getList: function () {
       var that = this
-      axios.get('http://localhost:3000/playlist/detail?id=' + this.listId).then
+      axios.get('http://localhost:3001/playlist/detail?id=' + this.listId).then
       (function (response) {
         // console.log(response)
         that.listDetail = response.data.playlist

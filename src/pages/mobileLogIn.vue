@@ -28,7 +28,8 @@
                 <label for="code">验证码:</label>
               </div>
               <div class="col-8">
-                <input type="text" placeholder="请输入您的验证码" id="code" v-model="code" @keyup.enter="getLogIn" style="width:100%">
+                <input type="text" placeholder="请输入您的验证码" id="code" v-model="code" @keyup.enter="getLogIn"
+                  style="width:100%">
               </div>
             </div>
           </form>
@@ -81,7 +82,7 @@ export default {
   },
   methods: {
     getCode: function () {
-      axios.get('http://localhost:3000/captcha/sent?phone=' + this.mobile).then
+      axios.get('http://localhost:3001/captcha/sent?phone=' + this.mobile).then
       (function (response) {
         console.log(response)
       }, function (err) {
@@ -91,7 +92,7 @@ export default {
 
     logInWithCode: function () {
       var that = this
-      axios.get('http://localhost:3000/login/cellphone?phone=' + this.mobile + '&password=' + '&captcha=' + this.code).then
+      axios.get('http://localhost:3001/login/cellphone?phone=' + this.mobile + '&password=' + '&captcha=' + this.code).then
       (function (response) {
         if (response.status === 200) {
           window.sessionStorage.setItem('userId', response.data.account.id)

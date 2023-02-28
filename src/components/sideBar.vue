@@ -4,13 +4,15 @@
     <div class="row bg-light pt-1 pb-3 navbar fixed-top g-0">
       <div class="row d-flex align-items-center navbar navbar-expand-lg navbar-light bg-light g-0 px-2">
         <div class="col-2">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span ><i class="fa-solid fa-bars"></i></span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fa-solid fa-bars"></i></span>
           </button>
         </div>
 
         <div class="col-8">
-          <input v-model="keyword" type="text" :placeholder="''+ searchKeyword"  style="font-family:Arial,FontAwesome;width:100%;padding: 5px;" @keyup.enter="goResult(keyword)">
+          <input v-model="keyword" type="text" :placeholder="''+ searchKeyword"
+            style="font-family:Arial,FontAwesome;width:100%;padding: 5px;" @keyup.enter="goResult(keyword)">
         </div>
 
         <div class="col-2">
@@ -28,7 +30,7 @@
       </div>
     </div>
 
-   </div>
+  </div>
 </template>
 <!-- 导入axios包 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -62,7 +64,7 @@ export default {
   methods: {
     getSearchKeyword: function () {
       var that = this
-      axios.get('http://localhost:3000/search/default').then
+      axios.get('http://localhost:3001/search/default').then
       (function (response) {
         // console.log(response)
         that.searchKeyword = response.data.data.showKeyword
@@ -72,7 +74,7 @@ export default {
     },
 
     logOut: function () {
-      axios.post('http://localhost:3000/logout?cookie=' + this.sessionCookie).then
+      axios.post('http://localhost:3001/logout?cookie=' + this.sessionCookie).then
       (function (response) {
         console.log(response)
       }, function (err) {

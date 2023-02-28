@@ -28,12 +28,13 @@
                 <label for="password">密码:</label>
               </div>
               <div class="col-8">
-                <input type="password" placeholder="请输入您的密码" id="password" @keyup.enter="getLogIn" autocomplete="on" v-model="password" style="width:100%">
+                <input type="password" placeholder="请输入您的密码" id="password" @keyup.enter="getLogIn" autocomplete="on"
+                  v-model="password" style="width:100%">
               </div>
             </div>
           </form>
           <div class="row mx-3 py-5 g-2">
-            <button class="btn btn-primary" @click="getLogIn" > 登录</button>
+            <button class="btn btn-primary" @click="getLogIn"> 登录</button>
           </div>
         </div>
         <div class="iconList mt-5 pt-5 mb-5">
@@ -79,7 +80,7 @@ export default {
   methods: {
     getLogIn: function () {
       var that = this
-      axios.get('http://localhost:3000/login/cellphone?phone=' + this.mobile + '&password=' + this.password).then
+      axios.get('http://localhost:3001/login/cellphone?phone=' + this.mobile + '&password=' + this.password).then
       (function (response) {
         // console.log(response);
         if (response.status === 200) {

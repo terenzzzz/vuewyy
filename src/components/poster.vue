@@ -1,23 +1,22 @@
 <template>
-<div class="swipe" id="swipe">
-  <div class="img-box" id="swipe_img_box">
-    <a>
-      <img v-for="(banner,index) in banners" :key="index" :src="banner.pic"
-            v-show="currentIndex==index"  @mouseenter="clear" @mouseout="changeIndex"
-            class="img-fluid px-4 " style="height:170px">
-    </a>
-  </div>
-  <div class="select" id="swipe_select">
-    <ul class="slide-index ">
-      <div class="row ">
-        <div class="col-12 pt-2 d-flex align-items-center">
-          <li class="item" v-for="(v,i) in banners" :key="i" :class="currentIndex==i?'active':''
-            " @mouseenter="clear" @mouseout="changeIndex" @click="goToIndex(i)"></li>
+  <div class="swipe" id="swipe">
+    <div class="img-box" id="swipe_img_box">
+      <a>
+        <img v-for="(banner,index) in banners" :key="index" :src="banner.pic" v-show="currentIndex==index"
+          @mouseenter="clear" @mouseout="changeIndex" class="img-fluid px-4 " style="height:170px">
+      </a>
+    </div>
+    <div class="select" id="swipe_select">
+      <ul class="slide-index ">
+        <div class="row ">
+          <div class="col-12 pt-2 d-flex align-items-center">
+            <li class="item" v-for="(v,i) in banners" :key="i" :class="currentIndex==i?'active':''
+                          " @mouseenter="clear" @mouseout="changeIndex" @click="goToIndex(i)"></li>
+          </div>
         </div>
-      </div>
-    </ul>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 <!-- 导入axios包 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -51,7 +50,7 @@ export default {
   methods: {
     getBanner: function () {
       var that = this
-      axios.get('http://localhost:3000/banner?type=2').then
+      axios.get('http://localhost:3001/banner?type=2').then
       (function (response) {
         // console.log(response)
         that.banners = response.data.banners

@@ -201,7 +201,7 @@ webpackJsonp(
           methods: {
             getRecomList: function() {
               var t = this;
-              axios.get("http://localhost:3000/personalized?limit=10").then(
+              axios.get("http://localhost:3001/personalized?limit=10").then(
                 function(s) {
                   t.recomList = s.data.result;
                 },
@@ -327,7 +327,7 @@ webpackJsonp(
             getNewSong: function() {
               var t = this;
               axios
-                .get("http://localhost:3000/personalized/newsong?limit=5")
+                .get("http://localhost:3001/personalized/newsong?limit=5")
                 .then(
                   function(s) {
                     t.newSongs = s.data.result;
@@ -340,7 +340,7 @@ webpackJsonp(
             getNewCd: function() {
               var t = this;
               axios
-                .get("http://localhost:3000/top/album?offset=0&limit=5")
+                .get("http://localhost:3001/top/album?offset=0&limit=5")
                 .then(
                   function(s) {
                     t.newCds = s.data.weekData.slice(10, 15);
@@ -352,7 +352,7 @@ webpackJsonp(
             },
             getNewAlbum: function() {
               var t = this;
-              axios.get("http://localhost:3000/album/list?limit=5").then(
+              axios.get("http://localhost:3001/album/list?limit=5").then(
                 function(s) {
                   t.newAlbums = s.data.products;
                 },
@@ -636,7 +636,7 @@ webpackJsonp(
           methods: {
             getList: function() {
               var t = this;
-              axios.get("http://localhost:3000/toplist/detail").then(
+              axios.get("http://localhost:3001/toplist/detail").then(
                 function(s) {
                   t.lists = s.data.list.slice(0, 5);
                 },
@@ -647,7 +647,7 @@ webpackJsonp(
             },
             getListSongs1: function(t) {
               var s = this;
-              axios.get("http://localhost:3000/playlist/detail?id=" + t).then(
+              axios.get("http://localhost:3001/playlist/detail?id=" + t).then(
                 function(t) {
                   s.listSongs1 = t.data.playlist.tracks.slice(0, 5);
                 },
@@ -782,7 +782,7 @@ webpackJsonp(
           methods: {
             getHotTopic: function() {
               var t = this;
-              axios.get("http://localhost:3000/hot/topic?limit=9").then(
+              axios.get("http://localhost:3001/hot/topic?limit=9").then(
                 function(s) {
                   t.hotTopics = s.data.hot;
                 },
@@ -959,7 +959,7 @@ webpackJsonp(
           methods: {
             getSearchKeyword: function() {
               var t = this;
-              axios.get("http://localhost:3000/search/default").then(
+              axios.get("http://localhost:3001/search/default").then(
                 function(s) {
                   t.searchKeyword = s.data.data.showKeyword;
                 },
@@ -971,7 +971,7 @@ webpackJsonp(
             logOut: function() {
               axios
                 .post(
-                  "http://localhost:3000/logout?cookie=" + this.sessionCookie
+                  "http://localhost:3001/logout?cookie=" + this.sessionCookie
                 )
                 .then(
                   function(t) {
@@ -1136,7 +1136,7 @@ webpackJsonp(
           methods: {
             getBanner: function() {
               var t = this;
-              axios.get("http://localhost:3000/banner?type=2").then(
+              axios.get("http://localhost:3001/banner?type=2").then(
                 function(s) {
                   t.banners = s.data.banners;
                 },
@@ -1432,7 +1432,7 @@ webpackJsonp(
           methods: {
             getRecomSongs: function() {
               var t = this;
-              axios.post("http://localhost:3000/recommend/songs").then(
+              axios.post("http://localhost:3001/recommend/songs").then(
                 function(s) {
                   (t.recomSongs = s.data.data.dailySongs), console.log(s);
                 },
@@ -1656,7 +1656,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/user/detail?uid=" + this.sessionUid
+                  "http://localhost:3001/user/detail?uid=" + this.sessionUid
                 )
                 .then(
                   function(s) {
@@ -1671,7 +1671,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/likelist?uid=" +
+                  "http://localhost:3001/likelist?uid=" +
                     this.sessionUid +
                     "&cookie=" +
                     this.sessionCookie
@@ -1690,7 +1690,7 @@ webpackJsonp(
             getFirstSong: function() {
               var t = this;
               axios
-                .get("http://localhost:3000/song/detail?ids=1808465866")
+                .get("http://localhost:3001/song/detail?ids=1808465866")
                 .then(
                   function(s) {
                     t.likeListPic = s.data.songs[0].al.picUrl;
@@ -1704,7 +1704,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/user/playlist?uid=" +
+                  "http://localhost:3001/user/playlist?uid=" +
                     this.sessionUid +
                     "&cookie=" +
                     this.sessionCookie
@@ -2142,7 +2142,7 @@ webpackJsonp(
           methods: {
             getCode: function() {
               axios
-                .get("http://localhost:3000/captcha/sent?phone=" + this.mobile)
+                .get("http://localhost:3001/captcha/sent?phone=" + this.mobile)
                 .then(
                   function(t) {
                     console.log(t);
@@ -2156,7 +2156,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/login/cellphone?phone=" +
+                  "http://localhost:3001/login/cellphone?phone=" +
                     this.mobile +
                     "&password=&captcha=" +
                     this.code
@@ -2375,7 +2375,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/login/cellphone?phone=" +
+                  "http://localhost:3001/login/cellphone?phone=" +
                     this.mobile +
                     "&password=" +
                     this.password
@@ -2589,7 +2589,7 @@ webpackJsonp(
               var t = this;
               axios
                 .post(
-                  "http://localhost:3000/user/record?uid=" +
+                  "http://localhost:3001/user/record?uid=" +
                     this.sessionUid +
                     "&type=1"
                 )
@@ -2788,7 +2788,7 @@ webpackJsonp(
           methods: {
             getCategories: function() {
               var t = this;
-              axios.post("http://localhost:3000/playlist/hot").then(
+              axios.post("http://localhost:3001/playlist/hot").then(
                 function(s) {
                   t.categories = s.data.tags.slice(0, 5);
                 },
@@ -2799,7 +2799,7 @@ webpackJsonp(
             },
             getAllCategories: function() {
               var t = this;
-              axios.post("http://localhost:3000/playlist/hot").then(
+              axios.post("http://localhost:3001/playlist/hot").then(
                 function(s) {
                   console.log(s),
                     (t.allCategories = s.data.tags.slice(5, 10)),
@@ -2931,7 +2931,7 @@ webpackJsonp(
             getHistoryList: function() {
               axios
                 .get(
-                  "http://localhost:3000/history/recommend/songs/detail?date=" +
+                  "http://localhost:3001/history/recommend/songs/detail?date=" +
                     this.year +
                     "-" +
                     this.month +
@@ -3016,7 +3016,7 @@ webpackJsonp(
           methods: {
             getList: function() {
               var t = this;
-              axios.get("http://localhost:3000/toplist/detail").then(
+              axios.get("http://localhost:3001/toplist/detail").then(
                 function(s) {
                   console.log(s), (t.list = s.data.list);
                 },
@@ -3149,7 +3149,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/playlist/detail?id=" + this.boardId
+                  "http://localhost:3001/playlist/detail?id=" + this.boardId
                 )
                 .then(
                   function(s) {
@@ -3344,7 +3344,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/cloudsearch?limit=50&keywords=" +
+                  "http://localhost:3001/cloudsearch?limit=50&keywords=" +
                     this.keyword
                 )
                 .then(
@@ -3362,7 +3362,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/cloudsearch?limit=50&type=10&keywords=" +
+                  "http://localhost:3001/cloudsearch?limit=50&type=10&keywords=" +
                     this.keyword
                 )
                 .then(
@@ -3378,7 +3378,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/cloudsearch?limit=50&type=100&keywords=" +
+                  "http://localhost:3001/cloudsearch?limit=50&type=100&keywords=" +
                     this.keyword
                 )
                 .then(
@@ -3394,7 +3394,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/cloudsearch?limit=50&type=1000&keywords=" +
+                  "http://localhost:3001/cloudsearch?limit=50&type=1000&keywords=" +
                     this.keyword
                 )
                 .then(
@@ -3412,7 +3412,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/cloudsearch?limit=50&type=1002&keywords=" +
+                  "http://localhost:3001/cloudsearch?limit=50&type=1002&keywords=" +
                     this.keyword
                 )
                 .then(
@@ -3842,7 +3842,7 @@ webpackJsonp(
           methods: {
             newAll: function() {
               var t = this;
-              axios.get("http://localhost:3000/top/song?type=0").then(
+              axios.get("http://localhost:3001/top/song?type=0").then(
                 function(s) {
                   (t.allsongs = s.data.data), (t.newShow = "全部");
                 },
@@ -3853,7 +3853,7 @@ webpackJsonp(
             },
             newCn: function() {
               var t = this;
-              axios.get("http://localhost:3000/top/song?type=7").then(
+              axios.get("http://localhost:3001/top/song?type=7").then(
                 function(s) {
                   (t.cns = s.data.data), (t.newShow = "华语");
                 },
@@ -3864,7 +3864,7 @@ webpackJsonp(
             },
             newEa: function() {
               var t = this;
-              axios.get("http://localhost:3000/top/song?type=96").then(
+              axios.get("http://localhost:3001/top/song?type=96").then(
                 function(s) {
                   console.log(s), (t.eas = s.data.data), (t.newShow = "欧美");
                 },
@@ -3875,7 +3875,7 @@ webpackJsonp(
             },
             newJp: function() {
               var t = this;
-              axios.get("http://localhost:3000/top/song?type=8").then(
+              axios.get("http://localhost:3001/top/song?type=8").then(
                 function(s) {
                   console.log(s), (t.jps = s.data.data), (t.newShow = "日本");
                 },
@@ -3886,7 +3886,7 @@ webpackJsonp(
             },
             newKr: function() {
               var t = this;
-              axios.get("http://localhost:3000/top/song?type=16").then(
+              axios.get("http://localhost:3001/top/song?type=16").then(
                 function(s) {
                   console.log(s), (t.krs = s.data.data), (t.newShow = "韩国");
                 },
@@ -4388,7 +4388,7 @@ webpackJsonp(
               var t = this;
               axios
                 .get(
-                  "http://localhost:3000/song/url?id=" +
+                  "http://localhost:3001/song/url?id=" +
                     this.songId +
                     "&cookie=" +
                     this.sessionCookie
@@ -4405,7 +4405,7 @@ webpackJsonp(
             getSongDetail: function() {
               var t = this;
               axios
-                .get("http://localhost:3000/song/detail?ids=" + this.songId)
+                .get("http://localhost:3001/song/detail?ids=" + this.songId)
                 .then(
                   function(s) {
                     console.log(s), (t.songDetail = s.data.songs[0]);
@@ -4417,7 +4417,7 @@ webpackJsonp(
             },
             getSongLyric: function() {
               var t = this;
-              axios.get("http://localhost:3000/lyric?id=" + this.songId).then(
+              axios.get("http://localhost:3001/lyric?id=" + this.songId).then(
                 function(s) {
                   t.songLyric = s.data.lrc.lyric;
                 },
@@ -4709,7 +4709,7 @@ webpackJsonp(
             getList: function() {
               var t = this;
               axios
-                .get("http://localhost:3000/playlist/detail?id=" + this.listId)
+                .get("http://localhost:3001/playlist/detail?id=" + this.listId)
                 .then(
                   function(s) {
                     (t.listDetail = s.data.playlist),

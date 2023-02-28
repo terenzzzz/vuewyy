@@ -19,7 +19,8 @@
           <div class="mx-auto pt-2">
             <img :src="this.detail.profile.avatarUrl" class="rounded-circle mb-3" style="width:70px;" alt="Avatar" />
           </div>
-          <h5 class="mb-2"><strong>{{this.detail.profile.nickname}}</strong><span class="badge bg-dark ms-2">VIP</span></h5>
+          <h5 class="mb-2"><strong>{{this.detail.profile.nickname}}</strong><span class="badge bg-dark ms-2">VIP</span>
+          </h5>
           <div class="row d-flex justify-content-center g-0">
             <div class="col-2"><span>关注: {{this.detail.profile.follows}}</span></div>
             <div class="col-2"><span>粉丝: {{this.detail.profile.followeds}}</span></div>
@@ -100,7 +101,8 @@
           <div class="col-2"><i class="fa-solid fa-ellipsis-vertical"></i></div>
         </div>
 
-        <div class="row ps-3 d-flex align-items-center g-0 mb-2" v-for="songList in songLists" :key="songList" @click="goList(songList.id)">
+        <div class="row ps-3 d-flex align-items-center g-0 mb-2" v-for="songList in songLists" :key="songList"
+          @click="goList(songList.id)">
           <div class="col-2">
             <img :src="songList.coverImgUrl" class="img-fluid" alt="">
           </div>
@@ -149,7 +151,7 @@ export default {
 
     getUserDetail: function () {
       var that = this
-      axios.get('http://localhost:3000/user/detail?uid=' + this.sessionUid).then
+      axios.get('http://localhost:3001/user/detail?uid=' + this.sessionUid).then
       (function (response) {
         that.detail = response.data
         // console.log(response)
@@ -160,7 +162,7 @@ export default {
 
     getLikelist: function () {
       var that = this
-      axios.get('http://localhost:3000/likelist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
+      axios.get('http://localhost:3001/likelist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
       (function (response) {
         that.likeList = response.data.ids
         that.likeListCount = response.data.ids.length
@@ -172,7 +174,7 @@ export default {
 
     getFirstSong: function () {
       var that = this
-      axios.get('http://localhost:3000/song/detail?ids=1808465866').then
+      axios.get('http://localhost:3001/song/detail?ids=1808465866').then
       (function (response) {
         that.likeListPic = response.data.songs[0].al.picUrl
       }, function (err) {
@@ -182,7 +184,7 @@ export default {
 
     getSongList: function () {
       var that = this
-      axios.get('http://localhost:3000/user/playlist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
+      axios.get('http://localhost:3001/user/playlist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
       (function (response) {
         that.songLists = response.data.playlist
         // console.log(response)

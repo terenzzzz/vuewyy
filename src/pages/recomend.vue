@@ -1,19 +1,19 @@
 <template>
-<div class="recomend">
-	<!-- 导航栏 -->
-	<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
-		<div class="container">
-			<div class="col-2">
-				<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
-			</div>
-			<div class="col-8">
-				今日推荐
-			</div>
-			<div class="col-2">
-				<i class="fa-solid fa-ellipsis-vertical"></i>
+	<div class="recomend">
+		<!-- 导航栏 -->
+		<div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
+			<div class="container">
+				<div class="col-2">
+					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
+				</div>
+				<div class="col-8">
+					今日推荐
+				</div>
+				<div class="col-2">
+					<i class="fa-solid fa-ellipsis-vertical"></i>
+				</div>
 			</div>
 		</div>
-	</div>
 
 		<div class="body">
 			<!-- 日期 -->
@@ -49,7 +49,8 @@
 							<div class="col-8 ">
 								<span class="small">{{recomSong.name}}</span>
 								<br>
-								<span class="small text-muted me-1" v-for="artist in recomSong.ar" :key="artist">{{artist.name}}</span>
+								<span class="small text-muted me-1" v-for="artist in recomSong.ar"
+									:key="artist">{{artist.name}}</span>
 							</div>
 							<div class="col-2">
 								<i class="fa-brands fa-youtube pe-2"></i>
@@ -63,7 +64,6 @@
 		</div>
 
 	</div>
-
 </template>
 <!-- 导入axios包 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -83,7 +83,7 @@ export default {
   methods: {
     getRecomSongs: function () {
       var that = this
-      axios.post('http://localhost:3000/recommend/songs').then
+      axios.post('http://localhost:3001/recommend/songs').then
       (function (response) {
         that.recomSongs = response.data.data.dailySongs
         console.log(response)

@@ -34,12 +34,13 @@
 					<li v-for="recentSong in recentSongs" :key="recentSong" @click="playSong(recentSong.song.id)">
 						<div class="row align-items-center mt-2 ps-2 pe-2 g-1">
 							<div class="col-2">
-							<img :src="recentSong.song.al.picUrl" class="img-fluid" alt="">
+								<img :src="recentSong.song.al.picUrl" class="img-fluid" alt="">
 							</div>
 							<div class="col-8 ">
 								<span class="small">{{recentSong.song.name}}</span>
 								<br>
-								<span class="small text-muted me-2" v-for="artist in recentSong.song.ar" :key="artist">{{artist.name}} - {{recentSong.song.al.name}}</span>
+								<span class="small text-muted me-2" v-for="artist in recentSong.song.ar"
+									:key="artist">{{artist.name}} - {{recentSong.song.al.name}}</span>
 							</div>
 							<div class="col-2">
 								<i class="fa-brands fa-youtube pe-2"></i>
@@ -56,7 +57,6 @@
 		</div>
 
 	</div>
-
 </template>
 <!-- 导入axios包 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -76,7 +76,7 @@ export default {
   methods: {
     getRecentSongs: function () {
       var that = this
-      axios.post('http://localhost:3000/user/record?uid=' + this.sessionUid + '&type=1').then
+      axios.post('http://localhost:3001/user/record?uid=' + this.sessionUid + '&type=1').then
       (function (response) {
         that.recentSongs = response.data.weekData
         console.log(response)

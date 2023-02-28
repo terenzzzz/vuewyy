@@ -2,17 +2,17 @@
   <div class="searchResult">
     <!-- 导航栏 -->
     <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
-        <div class="container">
-              <div class="col-2">
-                <a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
-              </div>
-              <div class="col-8">
-                搜索结果
-              </div>
-              <div class="col-2">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-              </div>
+      <div class="container">
+        <div class="col-2">
+          <a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
         </div>
+        <div class="col-8">
+          搜索结果
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+      </div>
     </div>
 
     <div class="body">
@@ -55,7 +55,7 @@
           <div class="col-7">
             <span>{{album.name}}</span>
             <br>
-            <span class="small text-muted m-1" >{{album.artist.name}} {{album.company}}</span>
+            <span class="small text-muted m-1">{{album.artist.name}} {{album.company}}</span>
           </div>
           <div class="col-2">
             <i class="fa-brands fa-youtube pe-2"></i>
@@ -81,7 +81,8 @@
       </div>
 
       <!-- 歌单 -->
-      <div class="row align-items-center mt-2 ps-1 pe-1 g-1" v-for="(playList,index) in playLists" :key="playList" v-show="typeShow == '歌单'">
+      <div class="row align-items-center mt-2 ps-1 pe-1 g-1" v-for="(playList,index) in playLists" :key="playList"
+        v-show="typeShow == '歌单'">
         <div class="col-1"> {{index+1}}. </div>
         <div class="col-2">
           <img :src="playList.coverImgUrl" class="img-fluid" alt="">
@@ -89,7 +90,7 @@
         <div class="col-9 ">
           <span class="small">{{playList.name}}</span>
           <br>
-          <span class="small text-muted me-2" >{{playList.trackCount}}首音乐  by {{playList.creator.nickname}}</span>
+          <span class="small text-muted me-2">{{playList.trackCount}}首音乐 by {{playList.creator.nickname}}</span>
         </div>
       </div>
 
@@ -147,7 +148,7 @@ export default {
   methods: {
     searchSong: function () {
       var that = this
-      axios.get('http://localhost:3000/cloudsearch?limit=50&keywords=' + this.keyword).then
+      axios.get('http://localhost:3001/cloudsearch?limit=50&keywords=' + this.keyword).then
       (function (response) {
         console.log(response)
         that.result = response.data.result.songs
@@ -159,7 +160,7 @@ export default {
 
     searchAlbum: function () {
       var that = this
-      axios.get('http://localhost:3000/cloudsearch?limit=50&type=10&keywords=' + this.keyword).then
+      axios.get('http://localhost:3001/cloudsearch?limit=50&type=10&keywords=' + this.keyword).then
       (function (response) {
         that.albums = response.data.result.albums
         that.typeShow = '专辑'
@@ -170,7 +171,7 @@ export default {
 
     searchSinger: function () {
       var that = this
-      axios.get('http://localhost:3000/cloudsearch?limit=50&type=100&keywords=' + this.keyword).then
+      axios.get('http://localhost:3001/cloudsearch?limit=50&type=100&keywords=' + this.keyword).then
       (function (response) {
         that.singers = response.data.result.artists
         that.typeShow = '歌手'
@@ -181,7 +182,7 @@ export default {
 
     searchList: function () {
       var that = this
-      axios.get('http://localhost:3000/cloudsearch?limit=50&type=1000&keywords=' + this.keyword).then
+      axios.get('http://localhost:3001/cloudsearch?limit=50&type=1000&keywords=' + this.keyword).then
       (function (response) {
         console.log(response)
         that.playLists = response.data.result.playlists
@@ -193,7 +194,7 @@ export default {
 
     searchUser: function () {
       var that = this
-      axios.get('http://localhost:3000/cloudsearch?limit=50&type=1002&keywords=' + this.keyword).then
+      axios.get('http://localhost:3001/cloudsearch?limit=50&type=1002&keywords=' + this.keyword).then
       (function (response) {
         console.log(response)
         that.users = response.data.result.userprofiles

@@ -1,19 +1,19 @@
 <template>
-   <div>
-     <!-- 导航栏 -->
+  <div>
+    <!-- 导航栏 -->
     <div class="row align-items-center bg-light pt-5 pb-3 ps-3 pe-3 navbar fixed-top">
-			<div class="container">
-				<div class="col-2">
-					<a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
-				</div>
-				<div class="col-8">
-					新歌推荐
-				</div>
-				<div class="col-2">
-					<i class="fa-solid fa-ellipsis-vertical"></i>
-				</div>
-			</div>
-		</div>
+      <div class="container">
+        <div class="col-2">
+          <a href="javascript:history.back()"><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
+        <div class="col-8">
+          新歌推荐
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+      </div>
+    </div>
 
     <div class="body">
       <!-- 搜索分类 -->
@@ -82,7 +82,7 @@
         </div>
       </div>
 
-       <!-- 日本列表 -->
+      <!-- 日本列表 -->
       <div class="card m-2" v-for="jp in jps" :key="jp" v-show="newShow == '日本'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(jp.id)">
           <div class="col-2">
@@ -100,7 +100,7 @@
         </div>
       </div>
 
-       <!-- 韩国列表 -->
+      <!-- 韩国列表 -->
       <div class="card m-2" v-for="kr in krs" :key="kr" v-show="newShow == '韩国'">
         <div class="row align-items-center my-2 ps-2 pe-2 g-1" @click="playSong(kr.id)">
           <div class="col-2">
@@ -119,7 +119,7 @@
       </div>
 
     </div>
-   </div>
+  </div>
 </template>
 <!-- 导入axios包 -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -154,7 +154,7 @@ export default {
   methods: {
     newAll: function () {
       var that = this
-      axios.get('http://localhost:3000/top/song?type=0').then
+      axios.get('http://localhost:3001/top/song?type=0').then
       (function (response) {
         // console.log(response)
         that.allsongs = response.data.data
@@ -166,7 +166,7 @@ export default {
 
     newCn: function () {
       var that = this
-      axios.get('http://localhost:3000/top/song?type=7').then
+      axios.get('http://localhost:3001/top/song?type=7').then
       (function (response) {
         // console.log(response)
         that.cns = response.data.data
@@ -178,7 +178,7 @@ export default {
 
     newEa: function () {
       var that = this
-      axios.get('http://localhost:3000/top/song?type=96').then
+      axios.get('http://localhost:3001/top/song?type=96').then
       (function (response) {
         console.log(response)
         that.eas = response.data.data
@@ -190,7 +190,7 @@ export default {
 
     newJp: function () {
       var that = this
-      axios.get('http://localhost:3000/top/song?type=8').then
+      axios.get('http://localhost:3001/top/song?type=8').then
       (function (response) {
         console.log(response)
         that.jps = response.data.data
@@ -202,7 +202,7 @@ export default {
 
     newKr: function () {
       var that = this
-      axios.get('http://localhost:3000/top/song?type=16').then
+      axios.get('http://localhost:3001/top/song?type=16').then
       (function (response) {
         console.log(response)
         that.krs = response.data.data
