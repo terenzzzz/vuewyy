@@ -80,7 +80,7 @@ export default {
   methods: {
     getLogIn: function () {
       var that = this
-      axios.get('http://localhost:3001/login/cellphone?phone=' + this.mobile + '&password=' + this.password).then
+      axios.get('http://46.101.60.239:3001/login/cellphone?phone=' + this.mobile + '&password=' + this.password).then
       (function (response) {
         // console.log(response);
         if (response.status === 200) {

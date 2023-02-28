@@ -58,7 +58,7 @@ export default {
   methods: {
     getList: function () {
       var that = this
-      axios.get('http://localhost:3001/toplist/detail').then
+      axios.get('http://46.101.60.239:3001/toplist/detail').then
       (function (response) {
         console.log(response)
         that.list = response.data.list

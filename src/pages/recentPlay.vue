@@ -76,7 +76,7 @@ export default {
   methods: {
     getRecentSongs: function () {
       var that = this
-      axios.post('http://localhost:3001/user/record?uid=' + this.sessionUid + '&type=1').then
+      axios.post('http://46.101.60.239:3001/user/record?uid=' + this.sessionUid + '&type=1').then
       (function (response) {
         that.recentSongs = response.data.weekData
         console.log(response)

@@ -97,7 +97,7 @@ export default {
   methods: {
     getNewSong: function () {
       var that = this
-      axios.get('http://localhost:3001/personalized/newsong?limit=5').then
+      axios.get('http://46.101.60.239:3001/personalized/newsong?limit=5').then
       (function (response) {
         // console.log(response)
         that.newSongs = response.data.result
@@ -107,7 +107,7 @@ export default {
     },
     getNewCd: function () {
       var that = this
-      axios.get('http://localhost:3001/top/album?offset=0&limit=5').then
+      axios.get('http://46.101.60.239:3001/top/album?offset=0&limit=5').then
       (function (response) {
         // console.log(response)
         that.newCds = response.data.weekData.slice(10, 15)
@@ -117,7 +117,7 @@ export default {
     },
     getNewAlbum: function () {
       var that = this
-      axios.get('http://localhost:3001/album/list?limit=5').then
+      axios.get('http://46.101.60.239:3001/album/list?limit=5').then
       (function (response) {
         // console.log(response)
         that.newAlbums = response.data.products

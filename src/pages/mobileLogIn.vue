@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     getCode: function () {
-      axios.get('http://localhost:3001/captcha/sent?phone=' + this.mobile).then
+      axios.get('http://46.101.60.239:3001/captcha/sent?phone=' + this.mobile).then
       (function (response) {
         console.log(response)
       }, function (err) {
@@ -92,7 +92,7 @@ export default {
 
     logInWithCode: function () {
       var that = this
-      axios.get('http://localhost:3001/login/cellphone?phone=' + this.mobile + '&password=' + '&captcha=' + this.code).then
+      axios.get('http://46.101.60.239:3001/login/cellphone?phone=' + this.mobile + '&password=' + '&captcha=' + this.code).then
       (function (response) {
         if (response.status === 200) {
           window.sessionStorage.setItem('userId', response.data.account.id)

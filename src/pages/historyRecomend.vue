@@ -52,7 +52,7 @@ export default {
       }
     },
     getHistoryList: function () {
-      axios.get('http://localhost:3001/history/recommend/songs/detail?date=' + this.year + '-' + this.month + '-' + this.date).then
+      axios.get('http://46.101.60.239:3001/history/recommend/songs/detail?date=' + this.year + '-' + this.month + '-' + this.date).then
       (function (response) {
         console.log(response)
       }, function (err) {

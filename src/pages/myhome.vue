@@ -151,7 +151,7 @@ export default {
 
     getUserDetail: function () {
       var that = this
-      axios.get('http://localhost:3001/user/detail?uid=' + this.sessionUid).then
+      axios.get('http://46.101.60.239:3001/user/detail?uid=' + this.sessionUid).then
       (function (response) {
         that.detail = response.data
         // console.log(response)
@@ -162,7 +162,7 @@ export default {
 
     getLikelist: function () {
       var that = this
-      axios.get('http://localhost:3001/likelist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
+      axios.get('http://46.101.60.239:3001/likelist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
       (function (response) {
         that.likeList = response.data.ids
         that.likeListCount = response.data.ids.length
@@ -174,7 +174,7 @@ export default {
 
     getFirstSong: function () {
       var that = this
-      axios.get('http://localhost:3001/song/detail?ids=1808465866').then
+      axios.get('http://46.101.60.239:3001/song/detail?ids=1808465866').then
       (function (response) {
         that.likeListPic = response.data.songs[0].al.picUrl
       }, function (err) {
@@ -184,7 +184,7 @@ export default {
 
     getSongList: function () {
       var that = this
-      axios.get('http://localhost:3001/user/playlist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
+      axios.get('http://46.101.60.239:3001/user/playlist?uid=' + this.sessionUid + '&cookie=' + this.sessionCookie).then
       (function (response) {
         that.songLists = response.data.playlist
         // console.log(response)

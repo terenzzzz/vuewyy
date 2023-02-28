@@ -48,7 +48,7 @@ export default {
   methods: {
     getRecomList: function () {
       var that = this
-      axios.get('http://localhost:3001/personalized?limit=10').then
+      axios.get('http://46.101.60.239:3001/personalized?limit=10').then
       (function (response) {
         // console.log(response)
         that.recomList = response.data.result
