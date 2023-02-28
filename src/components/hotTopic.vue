@@ -59,7 +59,7 @@ export default {
   methods: {
     getHotTopic: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/hot/topic?limit=9').then(function (response) {
+      axios.get('http://localhost:3000/hot/topic?limit=9').then(function (response) {
         // console.log(response)
         that.hotTopics = response.data.hot
       }, function (err) {

@@ -97,7 +97,7 @@ export default {
   methods: {
     getNewSong: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/personalized/newsong?limit=5').then
+      axios.get('http://localhost:3000/personalized/newsong?limit=5').then
       (function (response) {
         // console.log(response)
         that.newSongs = response.data.result
@@ -107,7 +107,7 @@ export default {
     },
     getNewCd: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/top/album?offset=0&limit=5').then
+      axios.get('http://localhost:3000/top/album?offset=0&limit=5').then
       (function (response) {
         // console.log(response)
         that.newCds = response.data.weekData.slice(10, 15)
@@ -117,7 +117,7 @@ export default {
     },
     getNewAlbum: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/album/list?limit=5').then
+      axios.get('http://localhost:3000/album/list?limit=5').then
       (function (response) {
         // console.log(response)
         that.newAlbums = response.data.products

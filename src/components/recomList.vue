@@ -47,7 +47,7 @@ export default {
   methods: {
     getRecomList: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/personalized?limit=10').then
+      axios.get('http://localhost:3000/personalized?limit=10').then
       (function (response) {
         // console.log(response)
         that.recomList = response.data.result

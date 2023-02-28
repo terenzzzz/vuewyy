@@ -58,7 +58,7 @@ export default {
   methods: {
     getList: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/toplist/detail').then
+      axios.get('http://localhost:3000/toplist/detail').then
       (function (response) {
         console.log(response)
         that.list = response.data.list

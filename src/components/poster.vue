@@ -51,7 +51,7 @@ export default {
   methods: {
     getBanner: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/banner?type=2').then
+      axios.get('http://localhost:3000/banner?type=2').then
       (function (response) {
         // console.log(response)
         that.banners = response.data.banners

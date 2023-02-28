@@ -79,7 +79,7 @@ export default {
   methods: {
     getLogIn: function () {
       var that = this
-      axios.get('https://wyyyyy.herokuapp.com/login/cellphone?phone=' + this.mobile + '&password=' + this.password).then
+      axios.get('http://localhost:3000/login/cellphone?phone=' + this.mobile + '&password=' + this.password).then
       (function (response) {
         // console.log(response);
         if (response.status === 200) {
