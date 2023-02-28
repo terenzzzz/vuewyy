@@ -50,7 +50,7 @@ export default {
   methods: {
     getBanner: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/banner?type=2').then
+      axios.get('https://www.terenzzzz.com:3002/banner?type=2').then
       (function (response) {
         // console.log(response)
         that.banners = response.data.banners

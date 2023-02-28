@@ -61,7 +61,7 @@ export default {
   methods: {
     getCategories: function () {
       var that = this
-      axios.post('http://46.101.60.239:3001/playlist/hot').then
+      axios.post('https://www.terenzzzz.com:3002/playlist/hot').then
       (function (response) {
         // console.log(response)
         that.categories = response.data.tags.slice(0, 5)
@@ -72,7 +72,7 @@ export default {
 
     getAllCategories: function () {
       var that = this
-      axios.post('http://46.101.60.239:3001/playlist/hot').then
+      axios.post('https://www.terenzzzz.com:3002/playlist/hot').then
       (function (response) {
         console.log(response)
         that.allCategories = response.data.tags.slice(5, 10)

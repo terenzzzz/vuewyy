@@ -64,7 +64,7 @@ export default {
   methods: {
     getSearchKeyword: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/search/default').then
+      axios.get('https://www.terenzzzz.com:3002/search/default').then
       (function (response) {
         // console.log(response)
         that.searchKeyword = response.data.data.showKeyword
@@ -74,7 +74,7 @@ export default {
     },
 
     logOut: function () {
-      axios.post('http://46.101.60.239:3001/logout?cookie=' + this.sessionCookie).then
+      axios.post('https://www.terenzzzz.com:3002/logout?cookie=' + this.sessionCookie).then
       (function (response) {
         console.log(response)
       }, function (err) {

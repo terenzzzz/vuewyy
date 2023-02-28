@@ -83,7 +83,7 @@ export default {
   methods: {
     getRecomSongs: function () {
       var that = this
-      axios.post('http://46.101.60.239:3001/recommend/songs').then
+      axios.post('https://www.terenzzzz.com:3002/recommend/songs').then
       (function (response) {
         that.recomSongs = response.data.data.dailySongs
         console.log(response)

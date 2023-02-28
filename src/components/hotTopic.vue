@@ -62,7 +62,7 @@ export default {
   methods: {
     getHotTopic: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/hot/topic?limit=9').then(function (response) {
+      axios.get('https://www.terenzzzz.com:3002/hot/topic?limit=9').then(function (response) {
         // console.log(response)
         that.hotTopics = response.data.hot
       }, function (err) {

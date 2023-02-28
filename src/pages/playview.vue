@@ -121,7 +121,7 @@ export default {
 
     getSongUrl: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/song/url?id=' + this.songId + '&cookie=' + this.sessionCookie).then
+      axios.get('https://www.terenzzzz.com:3002/song/url?id=' + this.songId + '&cookie=' + this.sessionCookie).then
       (function (response) {
         // console.log(response);
         that.songUrl = response.data.data[0].url
@@ -132,7 +132,7 @@ export default {
 
     getSongDetail: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/song/detail?ids=' + this.songId).then
+      axios.get('https://www.terenzzzz.com:3002/song/detail?ids=' + this.songId).then
       (function (response) {
         console.log(response)
         that.songDetail = response.data.songs[0]
@@ -142,7 +142,7 @@ export default {
     },
     getSongLyric: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/lyric?id=' + this.songId).then
+      axios.get('https://www.terenzzzz.com:3002/lyric?id=' + this.songId).then
       (function (response) {
         // console.log(response);
         that.songLyric = response.data.lrc.lyric

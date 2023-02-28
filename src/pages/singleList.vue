@@ -102,7 +102,7 @@ export default {
   methods: {
     getList: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/playlist/detail?id=' + this.listId).then
+      axios.get('https://www.terenzzzz.com:3002/playlist/detail?id=' + this.listId).then
       (function (response) {
         // console.log(response)
         that.listDetail = response.data.playlist

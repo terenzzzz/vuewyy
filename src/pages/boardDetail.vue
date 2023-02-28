@@ -85,7 +85,7 @@ export default {
   methods: {
     getListSongs: function () {
       var that = this
-      axios.get('http://46.101.60.239:3001/playlist/detail?id=' + this.boardId).then
+      axios.get('https://www.terenzzzz.com:3002/playlist/detail?id=' + this.boardId).then
       (function (response) {
         console.log(response)
         that.boardName = response.data.playlist.name
